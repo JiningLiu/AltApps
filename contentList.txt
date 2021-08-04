@@ -7,6 +7,5 @@
 {"appID": 1101002001, "appListName":"unc0ver", "appVersion":"v6.2.0", "installLink":"altstore://install?url=https://rebrand.ly/altapps_unc0ver_app-download", "imageLink":"https://i.ibb.co/ysmmmPK/uncover-unc0ver-Icon-app-200px-1.png"},
 {"appID": 1102004001, "appListName":"Oddysey", "appVersion":"v1.3.3", "installLink":"altstore://install?url=https://github.com/Odyssey-Team/Odyssey/releases/download/1.3.3/Odyssey-1.3.3.ipa", "imageLink":"https://i.ibb.co/hH3mMrF/9-E2-B51-B7-3986-4-C55-8-A0-C-6-CCAA9-DCD90-C.jpg"},
 {"appID": 1103005001, "appListName":"Taurine", "appVersion":"v1.0.4", "installLink":"altstore://install?url=https://github.com/Odyssey-Team/Taurine/releases/download/1.0.4/Taurine-1.0.4.ipa", "imageLink":"https://i.ibb.co/t41g0s1/D2-FDE203-9-C35-4-CC0-A9-EA-2542-E64-C54-AB.jpg"},
-{"appID": 1201003001, "appListName":"Cercube", "appVersion":"v5.2.28", "installLink":"altstore://install?url=https://rebrand.ly/altapps_cercube_app-download", "imageLink":"https://i.ibb.co/pngmMWT/app-icon-192.png"}, 
-{"appID": 1202006001, "appListName":"Twitter Owl", "appVersion":"v1.7.1", "installLink":"altstore://install?url=https://rebrand.ly/altapps_twitter-owl-install-link", "imageLink":"https://i.ibb.co/gyGkgtF/FB225-C06-1-CFA-41-F6-B9-A8-28-B16-E89-C9-C0.jpg"}
+{"appID": 1201003001, "appListName":"Cercube", "appVersion":"v5.2.28", "installLink":"altstore://install?url=https://rebrand.ly/altapps_cercube_app-download", "imageLink":"https://i.ibb.co/pngmMWT/app-icon-192.png"}
 ]}
