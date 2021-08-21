@@ -7,62 +7,89 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC02850326C090180037AB73 /* installButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02850226C090180037AB73 /* installButton.swift */; };
+		CC383D8726B1EFC400A9ED31 /* welcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC383D8626B1EFC400A9ED31 /* welcomeView.swift */; };
+		CC46A52A26B4BAF2002C23E8 /* customButtonLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC46A52926B4BAF2002C23E8 /* customButtonLarge.swift */; };
+		CC46A52C26B4BC53002C23E8 /* customButtonSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC46A52B26B4BC53002C23E8 /* customButtonSmall.swift */; };
+		CC55B59F26CAC194002EF30E /* AddCustomAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC55B59E26CAC194002EF30E /* AddCustomAppView.swift */; };
+		CC86A19626BC2C660024D2E1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC86A19526BC2C650024D2E1 /* SettingsView.swift */; };
+		CC8E0EBB26BA25E1004CEDC9 /* AltApps_BetaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EBA26BA25E1004CEDC9 /* AltApps_BetaApp.swift */; };
+		CC8E0EBD26BA25E1004CEDC9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EBC26BA25E1004CEDC9 /* ContentView.swift */; };
+		CC8E0EBF26BA25E3004CEDC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC8E0EBE26BA25E3004CEDC9 /* Assets.xcassets */; };
+		CC8E0EC226BA25E3004CEDC9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC8E0EC126BA25E3004CEDC9 /* Preview Assets.xcassets */; };
+		CC8E0EE126BA270D004CEDC9 /* welcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EE026BA270D004CEDC9 /* welcomeView.swift */; };
+		CC8E0EE726BA27A5004CEDC9 /* customButtomSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EE626BA27A5004CEDC9 /* customButtomSmall.swift */; };
+		CC8E0EE926BA288D004CEDC9 /* InformationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EE826BA288C004CEDC9 /* InformationDetailView.swift */; };
+		CC8E0EEB26BA28A0004CEDC9 /* InformationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EEA26BA28A0004CEDC9 /* InformationDetailView.swift */; };
+		CC9F0D4326BD9DDC00C302F6 /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F0D4226BD9DDC00C302F6 /* UpdateView.swift */; };
 		CCB912EA26AE10F800625119 /* AltAppsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB912E926AE10F800625119 /* AltAppsApp.swift */; };
 		CCB912EC26AE10F800625119 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB912EB26AE10F800625119 /* ContentView.swift */; };
 		CCB912EE26AE10FA00625119 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB912ED26AE10FA00625119 /* Assets.xcassets */; };
 		CCB912F126AE10FA00625119 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB912F026AE10FA00625119 /* Preview Assets.xcassets */; };
-		CCB912FC26AE10FB00625119 /* AltAppsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB912FB26AE10FB00625119 /* AltAppsTests.swift */; };
-		CCB9130726AE10FB00625119 /* AltAppsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB9130626AE10FB00625119 /* AltAppsUITests.swift */; };
+		CCC22EE826C71904004540E0 /* customButtonLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC22EE726C71904004540E0 /* customButtonLarge.swift */; };
+		CCE2628226B2140100241F01 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE2628126B2140100241F01 /* StartView.swift */; };
+		CCF662B626C87C59004396B5 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF662B526C87C59004396B5 /* MailView.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		CCB912F826AE10FB00625119 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CCB912DE26AE10F800625119 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CCB912E526AE10F800625119;
-			remoteInfo = AltApps;
+/* Begin PBXCopyFilesBuildPhase section */
+		CC6400E226C1DF9A001AC9F6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CCB9130326AE10FB00625119 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CCB912DE26AE10F800625119 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CCB912E526AE10F800625119;
-			remoteInfo = AltApps;
-		};
-/* End PBXContainerItemProxy section */
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CC02850226C090180037AB73 /* installButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = installButton.swift; sourceTree = "<group>"; };
+		CC383D8626B1EFC400A9ED31 /* welcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcomeView.swift; sourceTree = "<group>"; };
+		CC46A52926B4BAF2002C23E8 /* customButtonLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButtonLarge.swift; sourceTree = "<group>"; };
+		CC46A52B26B4BC53002C23E8 /* customButtonSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButtonSmall.swift; sourceTree = "<group>"; };
+		CC55B59E26CAC194002EF30E /* AddCustomAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCustomAppView.swift; sourceTree = "<group>"; };
+		CC55B61A26D14B18002EF30E /* AltConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AltConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC6400D426C1DF14001AC9F6 /* AltApps-Beta-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AltApps-Beta-Info.plist"; sourceTree = SOURCE_ROOT; };
+		CC86A19526BC2C650024D2E1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CC8E0EB826BA25E1004CEDC9 /* AltApps Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AltApps Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC8E0EBA26BA25E1004CEDC9 /* AltApps_BetaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltApps_BetaApp.swift; sourceTree = "<group>"; };
+		CC8E0EBC26BA25E1004CEDC9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CC8E0EBE26BA25E3004CEDC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC8E0EC126BA25E3004CEDC9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CC8E0EE026BA270D004CEDC9 /* welcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcomeView.swift; sourceTree = "<group>"; };
+		CC8E0EE626BA27A5004CEDC9 /* customButtomSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButtomSmall.swift; sourceTree = "<group>"; };
+		CC8E0EE826BA288C004CEDC9 /* InformationDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationDetailView.swift; sourceTree = "<group>"; };
+		CC8E0EEA26BA28A0004CEDC9 /* InformationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationDetailView.swift; sourceTree = "<group>"; };
+		CC9F0D4226BD9DDC00C302F6 /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 		CCB912E626AE10F800625119 /* AltApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AltApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCB912E926AE10F800625119 /* AltAppsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltAppsApp.swift; sourceTree = "<group>"; };
 		CCB912EB26AE10F800625119 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CCB912ED26AE10FA00625119 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCB912F026AE10FA00625119 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CCB912F226AE10FA00625119 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCB912F726AE10FB00625119 /* AltAppsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AltAppsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCB912FB26AE10FB00625119 /* AltAppsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltAppsTests.swift; sourceTree = "<group>"; };
-		CCB912FD26AE10FB00625119 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCB9130226AE10FB00625119 /* AltAppsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AltAppsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCB9130626AE10FB00625119 /* AltAppsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltAppsUITests.swift; sourceTree = "<group>"; };
-		CCB9130826AE10FB00625119 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCC22EE726C71904004540E0 /* customButtonLarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customButtonLarge.swift; sourceTree = "<group>"; };
+		CCE2628126B2140100241F01 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		CCF662B526C87C59004396B5 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CC55B61726D14B18002EF30E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC8E0EB526BA25E1004CEDC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CCB912E326AE10F800625119 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CCB912F426AE10FB00625119 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CCB912FF26AE10FB00625119 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,12 +99,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC8E0EB926BA25E1004CEDC9 /* AltApps Beta */ = {
+			isa = PBXGroup;
+			children = (
+				CC8E0EBA26BA25E1004CEDC9 /* AltApps_BetaApp.swift */,
+				CC8E0EE026BA270D004CEDC9 /* welcomeView.swift */,
+				CC8E0EBC26BA25E1004CEDC9 /* ContentView.swift */,
+				CC9F0D4226BD9DDC00C302F6 /* UpdateView.swift */,
+				CC86A19526BC2C650024D2E1 /* SettingsView.swift */,
+				CC55B59E26CAC194002EF30E /* AddCustomAppView.swift */,
+				CC02850226C090180037AB73 /* installButton.swift */,
+				CC8E0EE626BA27A5004CEDC9 /* customButtomSmall.swift */,
+				CCC22EE726C71904004540E0 /* customButtonLarge.swift */,
+				CCF662B526C87C59004396B5 /* MailView.swift */,
+				CC8E0EEA26BA28A0004CEDC9 /* InformationDetailView.swift */,
+				CC6400D426C1DF14001AC9F6 /* AltApps-Beta-Info.plist */,
+				CC8E0EBE26BA25E3004CEDC9 /* Assets.xcassets */,
+				CC8E0EC026BA25E3004CEDC9 /* Preview Content */,
+			);
+			path = "AltApps Beta";
+			sourceTree = "<group>";
+		};
+		CC8E0EC026BA25E3004CEDC9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CC8E0EC126BA25E3004CEDC9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		CCB912DD26AE10F800625119 = {
 			isa = PBXGroup;
 			children = (
 				CCB912E826AE10F800625119 /* AltApps */,
-				CCB912FA26AE10FB00625119 /* AltAppsTests */,
-				CCB9130526AE10FB00625119 /* AltAppsUITests */,
+				CC8E0EB926BA25E1004CEDC9 /* AltApps Beta */,
 				CCB912E726AE10F800625119 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,8 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				CCB912E626AE10F800625119 /* AltApps.app */,
-				CCB912F726AE10FB00625119 /* AltAppsTests.xctest */,
-				CCB9130226AE10FB00625119 /* AltAppsUITests.xctest */,
+				CC8E0EB826BA25E1004CEDC9 /* AltApps Beta.app */,
+				CC55B61A26D14B18002EF30E /* AltConnect.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,7 +151,12 @@
 			isa = PBXGroup;
 			children = (
 				CCB912E926AE10F800625119 /* AltAppsApp.swift */,
+				CC383D8626B1EFC400A9ED31 /* welcomeView.swift */,
+				CCE2628126B2140100241F01 /* StartView.swift */,
 				CCB912EB26AE10F800625119 /* ContentView.swift */,
+				CC46A52B26B4BC53002C23E8 /* customButtonSmall.swift */,
+				CC46A52926B4BAF2002C23E8 /* customButtonLarge.swift */,
+				CC8E0EE826BA288C004CEDC9 /* InformationDetailView.swift */,
 				CCB912ED26AE10FA00625119 /* Assets.xcassets */,
 				CCB912F226AE10FA00625119 /* Info.plist */,
 				CCB912EF26AE10FA00625119 /* Preview Content */,
@@ -112,27 +172,44 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		CCB912FA26AE10FB00625119 /* AltAppsTests */ = {
-			isa = PBXGroup;
-			children = (
-				CCB912FB26AE10FB00625119 /* AltAppsTests.swift */,
-				CCB912FD26AE10FB00625119 /* Info.plist */,
-			);
-			path = AltAppsTests;
-			sourceTree = "<group>";
-		};
-		CCB9130526AE10FB00625119 /* AltAppsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CCB9130626AE10FB00625119 /* AltAppsUITests.swift */,
-				CCB9130826AE10FB00625119 /* Info.plist */,
-			);
-			path = AltAppsUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CC55B61926D14B18002EF30E /* AltConnect (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC55B62426D14B18002EF30E /* Build configuration list for PBXNativeTarget "AltConnect (macOS)" */;
+			buildPhases = (
+				CC55B61626D14B18002EF30E /* Sources */,
+				CC55B61726D14B18002EF30E /* Frameworks */,
+				CC55B61826D14B18002EF30E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AltConnect (macOS)";
+			productName = "AltConnect (macOS)";
+			productReference = CC55B61A26D14B18002EF30E /* AltConnect.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CC8E0EB726BA25E1004CEDC9 /* AltApps Beta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC8E0EDD26BA25E3004CEDC9 /* Build configuration list for PBXNativeTarget "AltApps Beta" */;
+			buildPhases = (
+				CC8E0EB426BA25E1004CEDC9 /* Sources */,
+				CC8E0EB526BA25E1004CEDC9 /* Frameworks */,
+				CC8E0EB626BA25E1004CEDC9 /* Resources */,
+				CC6400E226C1DF9A001AC9F6 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AltApps Beta";
+			productName = "AltApps Beta";
+			productReference = CC8E0EB826BA25E1004CEDC9 /* AltApps Beta.app */;
+			productType = "com.apple.product-type.application";
+		};
 		CCB912E526AE10F800625119 /* AltApps */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CCB9130B26AE10FB00625119 /* Build configuration list for PBXNativeTarget "AltApps" */;
@@ -146,45 +223,11 @@
 			dependencies = (
 			);
 			name = AltApps;
+			packageProductDependencies = (
+			);
 			productName = AltApps;
 			productReference = CCB912E626AE10F800625119 /* AltApps.app */;
 			productType = "com.apple.product-type.application";
-		};
-		CCB912F626AE10FB00625119 /* AltAppsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CCB9130E26AE10FB00625119 /* Build configuration list for PBXNativeTarget "AltAppsTests" */;
-			buildPhases = (
-				CCB912F326AE10FB00625119 /* Sources */,
-				CCB912F426AE10FB00625119 /* Frameworks */,
-				CCB912F526AE10FB00625119 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CCB912F926AE10FB00625119 /* PBXTargetDependency */,
-			);
-			name = AltAppsTests;
-			productName = AltAppsTests;
-			productReference = CCB912F726AE10FB00625119 /* AltAppsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		CCB9130126AE10FB00625119 /* AltAppsUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CCB9131126AE10FB00625119 /* Build configuration list for PBXNativeTarget "AltAppsUITests" */;
-			buildPhases = (
-				CCB912FE26AE10FB00625119 /* Sources */,
-				CCB912FF26AE10FB00625119 /* Frameworks */,
-				CCB9130026AE10FB00625119 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CCB9130426AE10FB00625119 /* PBXTargetDependency */,
-			);
-			name = AltAppsUITests;
-			productName = AltAppsUITests;
-			productReference = CCB9130226AE10FB00625119 /* AltAppsUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -192,19 +235,17 @@
 		CCB912DE26AE10F800625119 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					CC55B61926D14B18002EF30E = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					CC8E0EB726BA25E1004CEDC9 = {
+						CreatedOnToolsVersion = 13.0;
+					};
 					CCB912E526AE10F800625119 = {
 						CreatedOnToolsVersion = 12.5.1;
-					};
-					CCB912F626AE10FB00625119 = {
-						CreatedOnToolsVersion = 12.5.1;
-						TestTargetID = CCB912E526AE10F800625119;
-					};
-					CCB9130126AE10FB00625119 = {
-						CreatedOnToolsVersion = 12.5.1;
-						TestTargetID = CCB912E526AE10F800625119;
 					};
 				};
 			};
@@ -217,18 +258,36 @@
 				Base,
 			);
 			mainGroup = CCB912DD26AE10F800625119;
+			packageReferences = (
+			);
 			productRefGroup = CCB912E726AE10F800625119 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				CCB912E526AE10F800625119 /* AltApps */,
-				CCB912F626AE10FB00625119 /* AltAppsTests */,
-				CCB9130126AE10FB00625119 /* AltAppsUITests */,
+				CC8E0EB726BA25E1004CEDC9 /* AltApps Beta */,
+				CC55B61926D14B18002EF30E /* AltConnect (macOS) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CC55B61826D14B18002EF30E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC8E0EB626BA25E1004CEDC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC8E0EC226BA25E3004CEDC9 /* Preview Assets.xcassets in Resources */,
+				CC8E0EBF26BA25E3004CEDC9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CCB912E426AE10F800625119 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -238,64 +297,181 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CCB912F526AE10FB00625119 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CCB9130026AE10FB00625119 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CC55B61626D14B18002EF30E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC8E0EB426BA25E1004CEDC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC8E0EBD26BA25E1004CEDC9 /* ContentView.swift in Sources */,
+				CC9F0D4326BD9DDC00C302F6 /* UpdateView.swift in Sources */,
+				CC86A19626BC2C660024D2E1 /* SettingsView.swift in Sources */,
+				CCF662B626C87C59004396B5 /* MailView.swift in Sources */,
+				CCC22EE826C71904004540E0 /* customButtonLarge.swift in Sources */,
+				CC55B59F26CAC194002EF30E /* AddCustomAppView.swift in Sources */,
+				CC8E0EBB26BA25E1004CEDC9 /* AltApps_BetaApp.swift in Sources */,
+				CC8E0EEB26BA28A0004CEDC9 /* InformationDetailView.swift in Sources */,
+				CC8E0EE126BA270D004CEDC9 /* welcomeView.swift in Sources */,
+				CC8E0EE726BA27A5004CEDC9 /* customButtomSmall.swift in Sources */,
+				CC02850326C090180037AB73 /* installButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CCB912E226AE10F800625119 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC383D8726B1EFC400A9ED31 /* welcomeView.swift in Sources */,
+				CC46A52C26B4BC53002C23E8 /* customButtonSmall.swift in Sources */,
+				CC8E0EE926BA288D004CEDC9 /* InformationDetailView.swift in Sources */,
+				CCE2628226B2140100241F01 /* StartView.swift in Sources */,
+				CC46A52A26B4BAF2002C23E8 /* customButtonLarge.swift in Sources */,
 				CCB912EC26AE10F800625119 /* ContentView.swift in Sources */,
 				CCB912EA26AE10F800625119 /* AltAppsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CCB912F326AE10FB00625119 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CCB912FC26AE10FB00625119 /* AltAppsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CCB912FE26AE10FB00625119 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CCB9130726AE10FB00625119 /* AltAppsUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		CCB912F926AE10FB00625119 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CCB912E526AE10F800625119 /* AltApps */;
-			targetProxy = CCB912F826AE10FB00625119 /* PBXContainerItemProxy */;
-		};
-		CCB9130426AE10FB00625119 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CCB912E526AE10F800625119 /* AltApps */;
-			targetProxy = CCB9130326AE10FB00625119 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
+		CC55B62526D14B18002EF30E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 69AT4XUQ73;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltConnect";
+				PRODUCT_NAME = AltConnect;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CC55B62626D14B18002EF30E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 69AT4XUQ73;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltConnect";
+				PRODUCT_NAME = AltConnect;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CC8E0ED726BA25E3004CEDC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AltApps Beta/Preview Content\"";
+				DEVELOPMENT_TEAM = 69AT4XUQ73;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AltApps-Beta-Info.plist";
+				INFOPLIST_KEY_NSMainNibFile = ContentView;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.2.0;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltApps-Beta";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CC8E0ED826BA25E3004CEDC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AltApps Beta/Preview Content\"";
+				DEVELOPMENT_TEAM = 69AT4XUQ73;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AltApps-Beta-Info.plist";
+				INFOPLIST_KEY_NSMainNibFile = ContentView;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.2.0;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltApps-Beta";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		CCB9130926AE10FB00625119 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -347,7 +523,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -402,7 +578,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -417,6 +593,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AltApps/AltApps.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"AltApps/Preview Content\"";
 				DEVELOPMENT_TEAM = 69AT4XUQ73;
@@ -427,10 +604,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltApps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -439,6 +617,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AltApps/AltApps.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"AltApps/Preview Content\"";
 				DEVELOPMENT_TEAM = 69AT4XUQ73;
@@ -449,100 +628,35 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltApps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		CCB9130F26AE10FB00625119 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69AT4XUQ73;
-				INFOPLIST_FILE = AltAppsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltAppsTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AltApps.app/AltApps";
-			};
-			name = Debug;
-		};
-		CCB9131026AE10FB00625119 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69AT4XUQ73;
-				INFOPLIST_FILE = AltAppsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltAppsTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AltApps.app/AltApps";
-			};
-			name = Release;
-		};
-		CCB9131226AE10FB00625119 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69AT4XUQ73;
-				INFOPLIST_FILE = AltAppsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltAppsUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AltApps;
-			};
-			name = Debug;
-		};
-		CCB9131326AE10FB00625119 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69AT4XUQ73;
-				INFOPLIST_FILE = AltAppsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltAppsUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AltApps;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CC55B62426D14B18002EF30E /* Build configuration list for PBXNativeTarget "AltConnect (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC55B62526D14B18002EF30E /* Debug */,
+				CC55B62626D14B18002EF30E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC8E0EDD26BA25E3004CEDC9 /* Build configuration list for PBXNativeTarget "AltApps Beta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC8E0ED726BA25E3004CEDC9 /* Debug */,
+				CC8E0ED826BA25E3004CEDC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CCB912E126AE10F800625119 /* Build configuration list for PBXProject "AltApps" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -557,24 +671,6 @@
 			buildConfigurations = (
 				CCB9130C26AE10FB00625119 /* Debug */,
 				CCB9130D26AE10FB00625119 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CCB9130E26AE10FB00625119 /* Build configuration list for PBXNativeTarget "AltAppsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CCB9130F26AE10FB00625119 /* Debug */,
-				CCB9131026AE10FB00625119 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CCB9131126AE10FB00625119 /* Build configuration list for PBXNativeTarget "AltAppsUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CCB9131226AE10FB00625119 /* Debug */,
-				CCB9131326AE10FB00625119 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
