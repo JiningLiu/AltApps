@@ -11,20 +11,30 @@ import UIKit
 struct AddCustomAppView: View {
     @State private var customInstallLink: String = ""
     @Environment(\.openURL) var openURL
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        HStack {
-            Spacer()
-            TextField("Enter direct download link here", text: $customInstallLink)
-                .textFieldStyle(.roundedBorder)
-            Spacer()
-            Button("INSTALL") {
-                openURL(URL(string: "altstore://install?url=\(customInstallLink)")!)
-                Haptics.shared.play(.light)
+        NavigationView {
+            HStack {
+                Spacer()
+                TextField("Enter direct download link here", text: $customInstallLink)
+                    .textFieldStyle(.roundedBorder)
+                Spacer()
+                Button("INSTALL") {
+                    openURL(URL(string: "altstore://install?url=\(customInstallLink)")!)
+                    Haptics.shared.play(.light)
+                }
+                    .buttonStyle(installButton())
+                Spacer()
             }
-                .buttonStyle(installButton())
-            Spacer()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Done") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            }
+            .navigationBarTitle("Install other apps", displayMode: .inline)
         }
-        .navigationBarTitle("Install other apps", displayMode: .inline)
     }
 }
 

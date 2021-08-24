@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+struct AltAppsUpdateResponse: Codable {
+    var AltAppsRawResults: [AltAppsUpdateResult]
+}
+
+struct AltAppsUpdateResult: Codable {
+    var UpdateAppID: Int
+    var AltAppsVersion: String
+    var AltAppsLink: String
+}
+
 struct ComposeMailData {
   let subject: String
   let recipients: [String]?
@@ -14,6 +24,7 @@ struct ComposeMailData {
 }
 
 struct SettingsView: View {
+    @State var AltAppsRawResults = [AltAppsUpdateResult]()
     @State var viewStyleChangerSettingsView = UserDefaults.standard.showFeaturedView
     @State var refreshImages = UserDefaults.standard.refreshImagesToggle
     @State private var mailData = ComposeMailData(subject: "Contact Us",
@@ -39,8 +50,20 @@ struct SettingsView: View {
                     Spacer()
                     Text("1.2.0-beta")
                 }
-                NavigationLink(destination: UpdateView().navigationBarTitle("Updates")) {
-                    Text("Check for Updates")
+                ForEach(AltAppsRawResults, id: \.UpdateAppID) { item1 in
+                    if item1.AltAppsVersion == "v1.2.0-beta" {
+                        HStack {
+                            Text("AltApps is Up to Date")
+                                .foregroundColor(Color.green)
+                            Spacer()
+                            Image(systemName: "checkmark.circle")
+                                .foregroundColor(Color.green)
+                        }
+                    } else {
+                        Button("Install New Update (\(item1.AltAppsVersion))") {
+                            openURL(URL(string: item1.AltAppsLink)!)
+                        }
+                    }
                 }
             }
             Section {
@@ -130,7 +153,7 @@ struct SettingsView: View {
                     }
                 }
             }
-            Section {
+            Section(footer: Text("©2021 AltApps, all rights reserved")) {
                 Button("Reset All Settings", role: .destructive) {
                     resetAppAlert = true
                 }
@@ -164,11 +187,27 @@ struct SettingsView: View {
                     }
                 }
             }
-            Section(footer: Text("©2021 AltApps, all rights reserved")) {
-                //
-            }
         }
+        .onAppear(perform: AltAppsUpdateLoadData)
         .navigationBarTitle("Settings")
+    }
+    func AltAppsUpdateLoadData() {
+        guard let url = URL(string: "https://rebrand.ly/altapps_1-2-0-beta1_update") else {
+            print("Invalid URL")
+            return
+        }
+        let request1 = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request1) { data2, response2, error2 in
+            if let data2 = data2 {
+                if let decodedResponse2 = try? JSONDecoder().decode(AltAppsUpdateResponse.self, from: data2) {
+                    DispatchQueue.main.async {
+                        AltAppsRawResults = decodedResponse2.AltAppsRawResults
+                    }
+                    return
+                }
+            }
+            print("Fetch failed: \(error2?.localizedDescription ?? "Unknown error")")
+        }.resume()
     }
 }
 

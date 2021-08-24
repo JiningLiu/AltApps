@@ -21,7 +21,6 @@
 		CC8E0EE726BA27A5004CEDC9 /* customButtomSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EE626BA27A5004CEDC9 /* customButtomSmall.swift */; };
 		CC8E0EE926BA288D004CEDC9 /* InformationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EE826BA288C004CEDC9 /* InformationDetailView.swift */; };
 		CC8E0EEB26BA28A0004CEDC9 /* InformationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EEA26BA28A0004CEDC9 /* InformationDetailView.swift */; };
-		CC9F0D4326BD9DDC00C302F6 /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F0D4226BD9DDC00C302F6 /* UpdateView.swift */; };
 		CCB912EA26AE10F800625119 /* AltAppsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB912E926AE10F800625119 /* AltAppsApp.swift */; };
 		CCB912EC26AE10F800625119 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB912EB26AE10F800625119 /* ContentView.swift */; };
 		CCB912EE26AE10FA00625119 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB912ED26AE10FA00625119 /* Assets.xcassets */; };
@@ -62,7 +61,6 @@
 		CC8E0EE626BA27A5004CEDC9 /* customButtomSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButtomSmall.swift; sourceTree = "<group>"; };
 		CC8E0EE826BA288C004CEDC9 /* InformationDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationDetailView.swift; sourceTree = "<group>"; };
 		CC8E0EEA26BA28A0004CEDC9 /* InformationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationDetailView.swift; sourceTree = "<group>"; };
-		CC9F0D4226BD9DDC00C302F6 /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 		CCB912E626AE10F800625119 /* AltApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AltApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCB912E926AE10F800625119 /* AltAppsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltAppsApp.swift; sourceTree = "<group>"; };
 		CCB912EB26AE10F800625119 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				CC8E0EBA26BA25E1004CEDC9 /* AltApps_BetaApp.swift */,
 				CC8E0EE026BA270D004CEDC9 /* welcomeView.swift */,
 				CC8E0EBC26BA25E1004CEDC9 /* ContentView.swift */,
-				CC9F0D4226BD9DDC00C302F6 /* UpdateView.swift */,
 				CC86A19526BC2C650024D2E1 /* SettingsView.swift */,
 				CC55B59E26CAC194002EF30E /* AddCustomAppView.swift */,
 				CC02850226C090180037AB73 /* installButton.swift */,
@@ -312,7 +309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC8E0EBD26BA25E1004CEDC9 /* ContentView.swift in Sources */,
-				CC9F0D4326BD9DDC00C302F6 /* UpdateView.swift in Sources */,
 				CC86A19626BC2C660024D2E1 /* SettingsView.swift in Sources */,
 				CCF662B626C87C59004396B5 /* MailView.swift in Sources */,
 				CCC22EE826C71904004540E0 /* customButtonLarge.swift in Sources */,
