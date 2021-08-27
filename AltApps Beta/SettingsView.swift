@@ -192,7 +192,7 @@ struct SettingsView: View {
         .navigationBarTitle("Settings")
     }
     func AltAppsUpdateLoadData() {
-        guard let url = URL(string: "https://rebrand.ly/altapps_1-2-0-beta1_update") else {
+        guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/1.2.0beta1update.txt") else {
             print("Invalid URL")
             return
         }

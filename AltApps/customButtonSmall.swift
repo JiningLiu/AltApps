@@ -13,7 +13,7 @@ struct ButtonModifier1: ViewModifier {
             .foregroundColor(.white)
             .font(.headline)
             .padding()
-            .frame(minWidth: 0, maxWidth: 150, alignment: .center)
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             .background(RoundedRectangle(cornerRadius: 15, style: .continuous)
                 .fill(Color.mainColor))
             .shadow(radius: 10)
@@ -25,16 +25,4 @@ extension View {
     func customButtonSmall() -> ModifiedContent<Self, ButtonModifier1> {
         return modifier(ButtonModifier1())
     }
-}
-
-extension Text {
-    func customTitleText() -> Text {
-        self
-            .fontWeight(.black)
-            .font(.system(size: 36))
-    }
-}
-
-extension Color {
-    static var mainColor = Color(UIColor.systemIndigo)
 }
