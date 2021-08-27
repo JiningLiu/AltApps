@@ -690,7 +690,7 @@ struct ContentView: View {
         featuredDevAppLoadData()
     }
     func listLoadData() {
-        guard let url = URL(string: "https://rebrand.ly/altapps_contentlist_1-2-0") else {
+        guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/contentList_1.2.0") else {
             print("Invalid URL")
             return
         }
@@ -708,7 +708,7 @@ struct ContentView: View {
         }.resume()
     }
     func AOTDloadData() {
-        guard let url = URL(string: "https://rebrand.ly/altapps_aotd_1-2-0") else {
+        guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/aotd1.2.0.txt") else {
             print("Invalid URL")
             return
         }
@@ -726,7 +726,7 @@ struct ContentView: View {
         }.resume()
     }
     func featuredJailbreakLoadData() {
-        guard let url = URL(string: "https://rebrand.ly/altapps_featured_jailbreak_1-2-0") else {
+        guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/featured_jailbreak_1.2.0") else {
             print("Invalid URL")
             return
         }
@@ -744,7 +744,7 @@ struct ContentView: View {
         }.resume()
     }
     func featuredTweakLoadData() {
-        guard let url = URL(string: "https://rebrand.ly/altapps_featured_tweak_1-2-0") else {
+        guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/featured_tweak_1.2.0") else {
             print("Invalid URL")
             return
         }
@@ -762,7 +762,7 @@ struct ContentView: View {
         }.resume()
     }
     func featuredDevAppLoadData() {
-        guard let url = URL(string: "https://rebrand.ly/altapps_featured_devapp_1-2-0") else {
+        guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/featured_devapp_1.2.0") else {
             print("Invalid URL")
             return
         }
