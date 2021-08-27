@@ -1,0 +1,4 @@
+{
+  "aotdResult": [
+    {"AOTDid": 1301007001, "AOTDname":"Taptic", "AOTDinstall":"altstore://install?url=https://github.com/JiningLiu/AltApps-IPAs/releases/download/Taptic1.0.1/Taptic.ipa", "AOTDimage":"https://i.ibb.co/gJggvLj/App-Icon.png"}
+]}
