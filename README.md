@@ -2,8 +2,8 @@
 ## ALTAPPS BETA v1.2.0 IS UNAVAILABLE DUE TO FILE LOSS
 # AltApps
 AltApps is a third-party app store for AltStore, providing high-quality apps for free without revokes.
-## Completely Free, Will Be OPEN SOURCE
-Hooray! AltApps is completely free, no ads, and will be open source in the future!
+## Completely Free, completely OPEN SOURCE
+Hooray! AltApps is completely free, no ads, and is completely open source! Welcoming everyone to modify the app!
 ## iOS 14 & iOS 15 Support!
 AltApps has dedicated versions for iOS 14 and iOS 15! iOS 13 support coming soon!
 
