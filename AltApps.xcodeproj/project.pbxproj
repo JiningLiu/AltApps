@@ -11,6 +11,8 @@
 		CC3831BB26D8772400FDBF78 /* InformationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EE826BA288C004CEDC9 /* InformationDetailView.swift */; };
 		CC3831C526D87BDD00FDBF78 /* customButtonSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3831C426D87BDD00FDBF78 /* customButtonSmall.swift */; };
 		CC3831C626D87BDD00FDBF78 /* customButtonSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3831C426D87BDD00FDBF78 /* customButtonSmall.swift */; };
+		CC3831C826DAC53F00FDBF78 /* refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3831C726DAC53F00FDBF78 /* refresh.swift */; };
+		CC3831C926DAC53F00FDBF78 /* refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3831C726DAC53F00FDBF78 /* refresh.swift */; };
 		CC383D8726B1EFC400A9ED31 /* welcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC383D8626B1EFC400A9ED31 /* welcomeView.swift */; };
 		CC46A52A26B4BAF2002C23E8 /* customButtonLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC46A52926B4BAF2002C23E8 /* customButtonLarge.swift */; };
 		CC55B59F26CAC194002EF30E /* AddCustomAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC55B59E26CAC194002EF30E /* AddCustomAppView.swift */; };
@@ -45,6 +47,7 @@
 /* Begin PBXFileReference section */
 		CC02850226C090180037AB73 /* installButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = installButton.swift; sourceTree = "<group>"; };
 		CC3831C426D87BDD00FDBF78 /* customButtonSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButtonSmall.swift; sourceTree = "<group>"; };
+		CC3831C726DAC53F00FDBF78 /* refresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = refresh.swift; sourceTree = "<group>"; };
 		CC383D8626B1EFC400A9ED31 /* welcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcomeView.swift; sourceTree = "<group>"; };
 		CC46A52926B4BAF2002C23E8 /* customButtonLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButtonLarge.swift; sourceTree = "<group>"; };
 		CC55B59E26CAC194002EF30E /* AddCustomAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCustomAppView.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 				CC55B59E26CAC194002EF30E /* AddCustomAppView.swift */,
 				CC02850226C090180037AB73 /* installButton.swift */,
 				CCF662B526C87C59004396B5 /* MailView.swift */,
+				CC3831C726DAC53F00FDBF78 /* refresh.swift */,
 				CC6400D426C1DF14001AC9F6 /* AltApps-Beta-Info.plist */,
 				CC8E0EBE26BA25E3004CEDC9 /* Assets.xcassets */,
 				CC8E0EC026BA25E3004CEDC9 /* Preview Content */,
@@ -310,6 +314,7 @@
 				CC8E0EE126BA270D004CEDC9 /* welcomeView.swift in Sources */,
 				CC3831BB26D8772400FDBF78 /* InformationDetailView.swift in Sources */,
 				CC02850326C090180037AB73 /* installButton.swift in Sources */,
+				CC3831C926DAC53F00FDBF78 /* refresh.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +329,7 @@
 				CC46A52A26B4BAF2002C23E8 /* customButtonLarge.swift in Sources */,
 				CCB912EC26AE10F800625119 /* ContentView.swift in Sources */,
 				CCB912EA26AE10F800625119 /* AltAppsApp.swift in Sources */,
+				CC3831C826DAC53F00FDBF78 /* refresh.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
