@@ -1,5 +1,3 @@
-# WARNING
-## ALTAPPS BETA v1.2.0 IS UNAVAILABLE DUE TO FILE LOSS
 # AltApps
 AltApps is a third-party app store for AltStore, providing high-quality apps for free without revokes.
 ## Completely Free, completely OPEN SOURCE
