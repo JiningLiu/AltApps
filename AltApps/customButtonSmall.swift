@@ -14,7 +14,7 @@ struct ButtonModifier1: ViewModifier {
             .font(.headline)
             .padding()
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
-            .background(RoundedRectangle(cornerRadius: 25, style: .continuous)
+            .background(RoundedRectangle(cornerRadius: 15, style: .continuous)
                 .fill(Color.mainColor))
             .shadow(radius: 10)
             .padding(.bottom)
