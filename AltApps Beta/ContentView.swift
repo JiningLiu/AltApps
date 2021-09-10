@@ -72,6 +72,16 @@ struct devAppResult: Codable {
     var devAppDetail: String
 }
 
+struct AltAppsUpdateResponse: Codable {
+    var AltAppsRawResults: [AltAppsUpdateResult]
+}
+
+struct AltAppsUpdateResult: Codable {
+    var UpdateAppID: Int
+    var AltAppsVersion: String
+    var AltAppsLink: String
+}
+
 extension UserDefaults {
     var showWelcomeScreen: Bool {
         get {
@@ -144,18 +154,61 @@ struct ContentView: View {
     @State var jailbreakResults = [jailbreakResult]()
     @State var tweakResults = [tweakResult]()
     @State var devAppResults = [devAppResult]()
+    @State var AltAppsRawResults = [AltAppsUpdateResult]()
     @State var showWelcomeView = UserDefaults.standard.showWelcomeScreen
     @State var reloadImages = 0
     @State var showAddAppView = false
+    @State var showSettingsView = false
+    @State var updateAvailable = true
     @Environment(\.openURL) var openURL
     var body: some View {
         ZStack {
             NavigationView {
                 VStack {
                     if UserDefaults.standard.showFeaturedView == 0 {
-                        refresh(title: "Pull Down to Refresh", tintColor: Color.mainColor, content: {
+                        List {
                             VStack {
                                 ScrollView {
+                                    ForEach(AltAppsRawResults, id: \.UpdateAppID) { item1 in
+                                        if item1.AltAppsVersion != "v1.2.0-beta" {
+                                            HStack {
+                                                Text("Update Available")
+                                                    .font(.title)
+                                                    .fontWeight(.semibold)
+                                                    .foregroundColor(Color.mainColor)
+                                                    .padding(.horizontal)
+                                                Spacer()
+                                            }
+                                            VStack {
+                                                HStack {
+                                                    Spacer()
+                                                    Image("AltAppsIcon")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .cornerRadius(15.4)
+                                                        .frame(width: 70, height: 70, alignment: .center)
+                                                        .shadow(radius: 5)
+                                                        .padding(EdgeInsets(top: 7.5, leading: 0, bottom: 5, trailing: 0))
+                                                    Spacer()
+                                                }
+                                                Text("AltApps \(item1.AltAppsVersion)")
+                                                    .foregroundColor(Color.white)
+                                                    .fontWeight(.semibold)
+                                                Button("INSTALL") {
+                                                    openURL(URL(string: item1.AltAppsLink)!)
+                                                    Haptics.shared.play(.light)
+                                                }
+                                                    .buttonStyle(installButton())
+                                                    .padding(.bottom, 7.5)
+                                            }
+                                            .padding(.vertical, 10)
+                                            .background(Color.mainColor)
+                                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                                            .frame(maxWidth: .infinity)
+                                            .padding(.horizontal)
+                                            .padding(.bottom, 5)
+                                        }
+                                    }
                                     HStack {
                                         Text("App of The Week")
                                             .font(.title)
@@ -553,7 +606,12 @@ struct ContentView: View {
                                     .padding(.horizontal)
                                 }
                             }
-                        }) {
+                            .listRowSeparatorTint(.clear)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        }
+                        .listStyle(.plain)
+                        .refreshable {
                             loadData()
                             if UserDefaults.standard.refreshImagesToggle {
                                 if reloadImages == 0 {
@@ -565,13 +623,7 @@ struct ContentView: View {
                         }
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
-                                NavigationLink(
-                                    destination: SettingsView(),
-                                    label: {
-                                        Image(systemName: "gear")
-                                            .foregroundColor(Color.mainColor)
-                                    }
-                                )
+                                Button(action: {showSettingsView = true}, label: {Image(systemName: "gear")})
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button(action: {showAddAppView = true}, label: {Image(systemName: "plus")})
@@ -662,13 +714,7 @@ struct ContentView: View {
                             }
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarLeading) {
-                                    NavigationLink(
-                                        destination: SettingsView(),
-                                        label: {
-                                            Image(systemName: "gear")
-                                                .foregroundColor(Color.mainColor)
-                                        }
-                                    )
+                                    Button(action: {showSettingsView = true}, label: {Image(systemName: "gear")})
                                 }
                                 ToolbarItem(placement: .navigationBarTrailing) {
                                     Button(action: {showAddAppView = true}, label: {Image(systemName: "plus")})
@@ -704,6 +750,9 @@ struct ContentView: View {
                 }
             }
         }
+        .sheet(isPresented: $showSettingsView) {
+            SettingsView()
+        }
         .sheet(isPresented: $showAddAppView) {
             AddCustomAppView()
         }
@@ -711,7 +760,7 @@ struct ContentView: View {
             welcomeView().interactiveDismissDisabled()
         }
         .accentColor(Color.mainColor)
-        .onAppear(perform: {isViewLoading = true; listLoadData(); AOTDloadData(); featuredJailbreakLoadData(); featuredTweakLoadData(); featuredDevAppLoadData()})
+        .onAppear(perform: {isViewLoading = true; listLoadData(); AOTDloadData(); featuredJailbreakLoadData(); featuredTweakLoadData(); featuredDevAppLoadData(); AltAppsUpdateLoadData()})
     }
     func loadData() {
         listLoadData()
@@ -719,6 +768,7 @@ struct ContentView: View {
         featuredJailbreakLoadData()
         featuredTweakLoadData()
         featuredDevAppLoadData()
+        AltAppsUpdateLoadData()
     }
     func listLoadData() {
         guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/contentList_1.2.0") else {
@@ -809,6 +859,24 @@ struct ContentView: View {
                 }
             }
             print("Fetch failed: \(error6?.localizedDescription ?? "Unknown error")")
+        }.resume()
+    }
+    func AltAppsUpdateLoadData() {
+        guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/1.2.0beta1update.txt") else {
+            print("Invalid URL")
+            return
+        }
+        let request1 = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request1) { data2, response2, error2 in
+            if let data2 = data2 {
+                if let decodedResponse2 = try? JSONDecoder().decode(AltAppsUpdateResponse.self, from: data2) {
+                    DispatchQueue.main.async {
+                        AltAppsRawResults = decodedResponse2.AltAppsRawResults
+                    }
+                    return
+                }
+            }
+            print("Fetch failed: \(error2?.localizedDescription ?? "Unknown error")")
         }.resume()
     }
 }
