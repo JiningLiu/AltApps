@@ -19,6 +19,19 @@ extension Color {
     static var mainColor = Color(UIColor.systemIndigo)
 }
 
+class Haptics {
+    static let shared = Haptics()
+    
+    private init() { }
+
+    func play(_ feedbackStyle: UIImpactFeedbackGenerator.FeedbackStyle) {
+        UIImpactFeedbackGenerator(style: feedbackStyle).impactOccurred()
+    }
+    
+    func notify(_ feedbackType: UINotificationFeedbackGenerator.FeedbackType) {
+        UINotificationFeedbackGenerator().notificationOccurred(feedbackType)
+    }
+}
 
 struct listResponse: Codable {
     var appResults: [listResult]
@@ -30,6 +43,7 @@ struct listResult: Codable {
     var appVersion: String
     var installLink: String
     var imageLink: String
+    var appDetail: String
 }
 
 extension String {
@@ -55,47 +69,52 @@ struct ContentView: View {
             VStack {
                 List(appResults, id: \.appID) { item1 in
                     let appListText = item1.appListName + " " + item1.appVersion
-                    HStack {
-                        Image(uiImage: item1.imageLink.loadImage())
-                            .resizable()
-                            .cornerRadius(11)
-                            .frame(width: 50, height: 50, alignment: .center)
-                            .shadow(radius: 5)
-                        NavigationLink(
-                            destination:
-                                Link(
-                                    destination:
-                                        URL(string: item1.installLink)!,
-                                    label: {
-                                        VStack {
-                                            Image(uiImage: item1.imageLink.loadImage())
-                                                .resizable()
-                                                .cornerRadius(22)
-                                                .frame(width: 100, height: 100, alignment: .top)
-                                                .shadow(radius: 10)
-                                                .padding()
-                                            Text("Install " + appListText + " with AltStore")
-                                                .padding(.bottom)
-                                        }
-                                        .customButtonLarge()
-                                        .padding(.bottom, 50)
-                                        .navigationBarTitle(item1.appListName, displayMode: .inline)
-                                    }),
-                            label: {
-                                Text(appListText)
-                                    .font(.title3)
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(Color.mainColor)
-                            })
+                    NavigationLink(destination: {
+                        HStack {
+                            VStack {
+                                Image(uiImage: item1.imageLink.loadImage())
+                                    .resizable()
+                                    .scaledToFit()
+                                    .cornerRadius(14.3)
+                                    .frame(width: 65, height: 65, alignment: .center)
+                                    .shadow(radius: 5)
+                                Button("INSTALL") {
+                                    UIApplication.shared.open(URL(string: item1.installLink)!)
+                                    Haptics.shared.play(.light)
+                                }
+                                    .buttonStyle(installButton())
+                            }
+                            Text(item1.appDetail)
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        .navigationBarTitle(Text(item1.appListName), displayMode: .inline)
+                    }) {
+                        HStack {
+                            Image(uiImage: item1.imageLink.loadImage())
+                                .resizable()
+                                .cornerRadius(11)
+                                .frame(width: 50, height: 50, alignment: .center)
+                                .shadow(radius: 5)
+                            Text("\(appListText)")
+                                .font(.system(size: 20))
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color.mainColor)
+                            Spacer()
+                            Button("INSTALL") {
+                                UIApplication.shared.open(URL(string: item1.installLink)!)
+                                Haptics.shared.play(.light)
+                            }
+                                .buttonStyle(installButton())
+                        }
                     }
                 }
-                .navigationTitle("AltApps")
+                .navigationBarTitle("AltApps")
             }
         }
         .onAppear(perform: listLoadData)
     }
     func listLoadData() {
-        guard let url = URL(string: "https://rebrand.ly/altapps_contentlist") else {
+        guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/contentList_1.2.0") else {
             print("Invalid URL")
             return
         }

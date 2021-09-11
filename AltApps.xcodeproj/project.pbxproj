@@ -25,6 +25,7 @@
 		CCB912EC26AE10F800625119 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB912EB26AE10F800625119 /* ContentView.swift */; };
 		CCB912EE26AE10FA00625119 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB912ED26AE10FA00625119 /* Assets.xcassets */; };
 		CCB912F126AE10FA00625119 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB912F026AE10FA00625119 /* Preview Assets.xcassets */; };
+		CCC403CF26EC4CED001B733A /* installButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02850226C090180037AB73 /* installButton.swift */; };
 		CCE2628226B2140100241F01 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE2628126B2140100241F01 /* StartView.swift */; };
 		CCF662B626C87C59004396B5 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF662B526C87C59004396B5 /* MailView.swift */; };
 /* End PBXBuildFile section */
@@ -101,7 +102,6 @@
 				CC8E0EBC26BA25E1004CEDC9 /* ContentView.swift */,
 				CC86A19526BC2C650024D2E1 /* SettingsView.swift */,
 				CC55B59E26CAC194002EF30E /* AddCustomAppView.swift */,
-				CC02850226C090180037AB73 /* installButton.swift */,
 				CCF662B526C87C59004396B5 /* MailView.swift */,
 				CC6400D426C1DF14001AC9F6 /* AltApps-Beta-Info.plist */,
 				CC8E0EBE26BA25E3004CEDC9 /* Assets.xcassets */,
@@ -146,6 +146,7 @@
 				CCB912EB26AE10F800625119 /* ContentView.swift */,
 				CC3831C426D87BDD00FDBF78 /* customButtonSmall.swift */,
 				CC46A52926B4BAF2002C23E8 /* customButtonLarge.swift */,
+				CC02850226C090180037AB73 /* installButton.swift */,
 				CC8E0EE826BA288C004CEDC9 /* InformationDetailView.swift */,
 				CCB912ED26AE10FA00625119 /* Assets.xcassets */,
 				CCB912F226AE10FA00625119 /* Info.plist */,
@@ -318,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC3831C526D87BDD00FDBF78 /* customButtonSmall.swift in Sources */,
+				CCC403CF26EC4CED001B733A /* installButton.swift in Sources */,
 				CC383D8726B1EFC400A9ED31 /* welcomeView.swift in Sources */,
 				CC8E0EE926BA288D004CEDC9 /* InformationDetailView.swift in Sources */,
 				CCE2628226B2140100241F01 /* StartView.swift in Sources */,
@@ -587,12 +589,12 @@
 				DEVELOPMENT_TEAM = 69AT4XUQ73;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AltApps/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltApps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -611,12 +613,12 @@
 				DEVELOPMENT_TEAM = 69AT4XUQ73;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AltApps/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltApps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
