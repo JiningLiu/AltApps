@@ -31,6 +31,7 @@ extension UserDefaults {
 
 struct welcomeView: View {
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colorScheme
     @State var viewStyle = UserDefaults.standard.showFeaturedView
     @State var refreshImagesWelcome = UserDefaults.standard.refreshImagesToggle
     var stylePreview = ""
@@ -70,17 +71,33 @@ struct welcomeView: View {
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.mainColor)
                             if viewStyle == 0 {
-                                Image("FeaturedViewPreview")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 200, alignment: .center)
-                                    .padding()
+                                if colorScheme == .light {
+                                    Image("FeaturedViewPreview")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 200, alignment: .center)
+                                        .padding()
+                                } else {
+                                    Image("FeaturedViewPreviewDark")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 200, alignment: .center)
+                                        .padding()
+                                }
                             } else {
-                                Image("ListViewPreview")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 200, alignment: .center)
-                                    .padding()
+                                if colorScheme == .light {
+                                    Image("ListViewPreview")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 200, alignment: .center)
+                                        .padding()
+                                } else {
+                                    Image("ListViewPreviewDark")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 200, alignment: .center)
+                                        .padding()
+                                }
                             }
                             HStack {
                                 if viewStyle == 0 {
