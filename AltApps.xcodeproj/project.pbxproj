@@ -21,12 +21,12 @@
 		CC8E0EC226BA25E3004CEDC9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC8E0EC126BA25E3004CEDC9 /* Preview Assets.xcassets */; };
 		CC8E0EE126BA270D004CEDC9 /* welcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EE026BA270D004CEDC9 /* welcomeView.swift */; };
 		CC8E0EE926BA288D004CEDC9 /* InformationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EE826BA288C004CEDC9 /* InformationDetailView.swift */; };
-		CCB912EA26AE10F800625119 /* AltAppsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB912E926AE10F800625119 /* AltAppsApp.swift */; };
 		CCB912EC26AE10F800625119 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB912EB26AE10F800625119 /* ContentView.swift */; };
 		CCB912EE26AE10FA00625119 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB912ED26AE10FA00625119 /* Assets.xcassets */; };
 		CCB912F126AE10FA00625119 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB912F026AE10FA00625119 /* Preview Assets.xcassets */; };
 		CCC403CF26EC4CED001B733A /* installButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02850226C090180037AB73 /* installButton.swift */; };
-		CCE2628226B2140100241F01 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE2628126B2140100241F01 /* StartView.swift */; };
+		CCEB553C26EEAF5C002EE20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEB553A26EEAF5C002EE20A /* AppDelegate.swift */; };
+		CCEB553D26EEAF5C002EE20A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEB553B26EEAF5C002EE20A /* SceneDelegate.swift */; };
 		CCF662B626C87C59004396B5 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF662B526C87C59004396B5 /* MailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,12 +60,12 @@
 		CC8E0EE026BA270D004CEDC9 /* welcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcomeView.swift; sourceTree = "<group>"; };
 		CC8E0EE826BA288C004CEDC9 /* InformationDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationDetailView.swift; sourceTree = "<group>"; };
 		CCB912E626AE10F800625119 /* AltApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AltApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCB912E926AE10F800625119 /* AltAppsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltAppsApp.swift; sourceTree = "<group>"; };
 		CCB912EB26AE10F800625119 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CCB912ED26AE10FA00625119 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCB912F026AE10FA00625119 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CCB912F226AE10FA00625119 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCE2628126B2140100241F01 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		CCEB553A26EEAF5C002EE20A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../Xcode 11 Test App/Xcode 11 Test App/AppDelegate.swift"; sourceTree = "<group>"; };
+		CCEB553B26EEAF5C002EE20A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = "../../Xcode 11 Test App/Xcode 11 Test App/SceneDelegate.swift"; sourceTree = "<group>"; };
 		CCF662B526C87C59004396B5 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,9 +140,9 @@
 		CCB912E826AE10F800625119 /* AltApps */ = {
 			isa = PBXGroup;
 			children = (
-				CCB912E926AE10F800625119 /* AltAppsApp.swift */,
+				CCEB553A26EEAF5C002EE20A /* AppDelegate.swift */,
+				CCEB553B26EEAF5C002EE20A /* SceneDelegate.swift */,
 				CC383D8626B1EFC400A9ED31 /* welcomeView.swift */,
-				CCE2628126B2140100241F01 /* StartView.swift */,
 				CCB912EB26AE10F800625119 /* ContentView.swift */,
 				CC3831C426D87BDD00FDBF78 /* customButtonSmall.swift */,
 				CC46A52926B4BAF2002C23E8 /* customButtonLarge.swift */,
@@ -318,14 +318,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCEB553C26EEAF5C002EE20A /* AppDelegate.swift in Sources */,
 				CC3831C526D87BDD00FDBF78 /* customButtonSmall.swift in Sources */,
+				CCEB553D26EEAF5C002EE20A /* SceneDelegate.swift in Sources */,
 				CCC403CF26EC4CED001B733A /* installButton.swift in Sources */,
 				CC383D8726B1EFC400A9ED31 /* welcomeView.swift in Sources */,
 				CC8E0EE926BA288D004CEDC9 /* InformationDetailView.swift in Sources */,
-				CCE2628226B2140100241F01 /* StartView.swift in Sources */,
 				CC46A52A26B4BAF2002C23E8 /* customButtonLarge.swift in Sources */,
 				CCB912EC26AE10F800625119 /* ContentView.swift in Sources */,
-				CCB912EA26AE10F800625119 /* AltAppsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,54 +64,105 @@ extension String {
 
 struct ContentView: View {
     @State var appResults = [listResult]()
+    @State var showWelcomeView = UserDefaults.standard.showWelcomeScreen
     var body: some View {
         NavigationView {
             VStack {
-                List(appResults, id: \.appID) { item1 in
-                    let appListText = item1.appListName + " " + item1.appVersion
-                    NavigationLink(destination: {
-                        HStack {
-                            VStack {
+                if #available(iOS 14.0, *) {
+                    List(appResults, id: \.appID) { item1 in
+                        NavigationLink(destination:
+                            HStack {
+                                VStack {
+                                    Image(uiImage: item1.imageLink.loadImage())
+                                        .resizable()
+                                        .scaledToFit()
+                                        .cornerRadius(14.3)
+                                        .frame(width: 65, height: 65, alignment: .center)
+                                        .shadow(radius: 5)
+                                    Button("INSTALL") {
+                                        UIApplication.shared.open(URL(string: item1.installLink)!)
+                                        Haptics.shared.play(.light)
+                                    }
+                                        .buttonStyle(installButton())
+                                }
+                                Text(item1.appDetail)
+                            }
+                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                            .navigationBarTitle(Text(item1.appListName), displayMode: .inline)
+                            , label: {
+                            HStack {
                                 Image(uiImage: item1.imageLink.loadImage())
                                     .resizable()
                                     .scaledToFit()
-                                    .cornerRadius(14.3)
-                                    .frame(width: 65, height: 65, alignment: .center)
+                                    .cornerRadius(11)
+                                    .frame(width: 50, height: 50, alignment: .center)
                                     .shadow(radius: 5)
+                                Text("\(item1.appListName) \(item1.appVersion)")
+                                    .font(.system(size: 18))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color.mainColor)
+                                Spacer()
                                 Button("INSTALL") {
                                     UIApplication.shared.open(URL(string: item1.installLink)!)
                                     Haptics.shared.play(.light)
                                 }
                                     .buttonStyle(installButton())
                             }
-                            Text(item1.appDetail)
-                        }
-                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                        .navigationBarTitle(Text(item1.appListName), displayMode: .inline)
-                    }) {
-                        HStack {
-                            Image(uiImage: item1.imageLink.loadImage())
-                                .resizable()
-                                .cornerRadius(11)
-                                .frame(width: 50, height: 50, alignment: .center)
-                                .shadow(radius: 5)
-                            Text("\(appListText)")
-                                .font(.system(size: 20))
-                                .fontWeight(.semibold)
-                                .foregroundColor(Color.mainColor)
-                            Spacer()
-                            Button("INSTALL") {
-                                UIApplication.shared.open(URL(string: item1.installLink)!)
-                                Haptics.shared.play(.light)
-                            }
-                                .buttonStyle(installButton())
-                        }
+                        })
                     }
+                    .navigationBarTitle("AltApps")
+                } else {
+                    List(appResults, id: \.appID) { item1 in
+                        NavigationLink(destination:
+                            HStack {
+                                VStack {
+                                    Image(uiImage: item1.imageLink.loadImage())
+                                        .resizable()
+                                        .scaledToFit()
+                                        .cornerRadius(14.3)
+                                        .frame(width: 65, height: 65, alignment: .center)
+                                        .shadow(radius: 5)
+                                    Button("INSTALL") {
+                                        UIApplication.shared.open(URL(string: item1.installLink)!)
+                                        Haptics.shared.play(.light)
+                                    }
+                                        .buttonStyle(installButton())
+                                }
+                                Text(item1.appDetail)
+                            }
+                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                            .navigationBarTitle(Text(item1.appListName), displayMode: .inline)
+                            , label: {
+                            HStack {
+                                Image(uiImage: item1.imageLink.loadImage())
+                                    .resizable()
+                                    .scaledToFit()
+                                    .cornerRadius(11)
+                                    .frame(width: 50, height: 60, alignment: .center)
+                                    .shadow(radius: 5)
+                                Text("\(item1.appListName) \(item1.appVersion)")
+                                    .font(.system(size: 18))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color.mainColor)
+                                Spacer()
+                                Button("INSTALL") {
+                                    UIApplication.shared.open(URL(string: item1.installLink)!)
+                                    Haptics.shared.play(.light)
+                                }
+                                    .buttonStyle(installButton())
+                            }
+                        })
+                    }
+                    .listStyle(GroupedListStyle())
+                    .environment(\.horizontalSizeClass, .regular)
+                    .navigationBarTitle("AltApps")
                 }
-                .navigationBarTitle("AltApps")
             }
         }
         .onAppear(perform: listLoadData)
+        .sheet(isPresented: $showWelcomeView) {
+            welcomeView()
+        }
     }
     func listLoadData() {
         guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/contentList_1.2.0") else {
