@@ -1,4 +1,4 @@
 {
   "otherResults": [
-    {"otherID": 1401008001, "otherName":"Apple DemoLoop", "otherVersion":"v4.8", "otherLink":"itms-services://?action=download-manifest&url=https://demoupdate.apple.com/install/4.8/demoupdate.plist", "otherImage":"https://static.wikia.nocookie.net/ipod/images/1/16/ScreenSaverApp.png/revision/latest/scale-to-width-down/180?cb=20201213003652", "otherDetail":"This is the same app you see in Apple Stores labled as "Screen Saver", it plays and loops the video stored at "Root:/private/var/mobile/Demo.mov". "}
+    {"otherID": 1401008001, "otherName":"DemoLoop", "otherVersion":"v4.8", "otherLink":"itms-services://?action=download-manifest&url=https://demoupdate.apple.com/install/4.8/demoupdate.plist", "otherImage":"https://static.wikia.nocookie.net/ipod/images/1/16/ScreenSaverApp.png/revision/latest/scale-to-width-down/180?cb=20201213003652", "otherDetail":"This is the same app you see in Apple Stores labled as ''Screen Saver'', it plays and loops the video stored at ''Root:/private/var/mobile/Demo.mov''. "}
 ]}
