@@ -59,17 +59,17 @@ struct tweakResult: Codable {
     var tweakDetail: String
 }
 
-struct devAppResponse: Codable {
-    var devAppResults: [devAppResult]
+struct otherResponse: Codable {
+    var otherResults: [otherResult]
 }
 
-struct devAppResult: Codable {
-    var devAppID: Int
-    var devAppName: String
-    var devAppVersion: String
-    var devAppLink: String
-    var devAppImage: String
-    var devAppDetail: String
+struct otherResult: Codable {
+    var otherID: Int
+    var otherName: String
+    var otherVersion: String
+    var otherLink: String
+    var otherImage: String
+    var otherDetail: String
 }
 
 struct AltAppsUpdateResponse: Codable {
@@ -114,6 +114,15 @@ extension Color {
     }
 }
 
+extension View {
+    public func gradientForeground(colors: [Color]) -> some View {
+        self.overlay(LinearGradient(gradient: .init(colors: colors),
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing))
+            .mask(self)
+    }
+}
+
 class Haptics {
     static let shared = Haptics()
     
@@ -153,7 +162,7 @@ struct ContentView: View {
     @State var aotdResult = [AOTDresult]()
     @State var jailbreakResults = [jailbreakResult]()
     @State var tweakResults = [tweakResult]()
-    @State var devAppResults = [devAppResult]()
+    @State var otherResults = [otherResult]()
     @State var AltAppsRawResults = [AltAppsUpdateResult]()
     @State var showWelcomeView = UserDefaults.standard.showWelcomeScreen
     @State var reloadImages = 0
@@ -213,7 +222,7 @@ struct ContentView: View {
                                         Text("App of The Week")
                                             .font(.title)
                                             .fontWeight(.semibold)
-                                            .foregroundColor(Color.mainColor)
+                                            .gradientForeground(colors: [.red, .yellow])
                                             .padding(.horizontal)
                                         Spacer()
                                     }
@@ -281,7 +290,7 @@ struct ContentView: View {
                                         Text("Jailbreak")
                                             .font(.title2)
                                             .fontWeight(.semibold)
-                                            .foregroundColor(Color.mainColor)
+                                            .gradientForeground(colors: [.teal, .green])
                                             .padding(.horizontal)
                                             .padding(.bottom, 5)
                                         Spacer()
@@ -392,7 +401,7 @@ struct ContentView: View {
                                         Text("Tweaked Apps")
                                             .font(.title2)
                                             .fontWeight(.semibold)
-                                            .foregroundColor(Color.mainColor)
+                                            .gradientForeground(colors: [.mint, .blue])
                                             .padding(.horizontal)
                                             .padding(.bottom, 5)
                                         Spacer()
@@ -497,17 +506,17 @@ struct ContentView: View {
                                         .clipShape(RoundedRectangle(cornerRadius: 30))
                                         .padding(.horizontal)
                                     HStack {
-                                        Text("From AltApps Devs")
+                                        Text("Other Apps")
                                             .font(.title2)
                                             .fontWeight(.semibold)
-                                            .foregroundColor(Color.mainColor)
+                                            .gradientForeground(colors: [.blue, .purple])
                                             .padding(.horizontal)
                                             .padding(.bottom, 5)
                                         Spacer()
                                     }
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         HStack {
-                                            ForEach(devAppResults, id: \.devAppID) { item5 in
+                                            ForEach(otherResults, id: \.otherID) { item6 in
                                                 ZStack {
                                                     Image(systemName: "square.fill")
                                                         .resizable()
@@ -522,8 +531,8 @@ struct ContentView: View {
                                                         NavigationLink(destination:
                                                             HStack {
                                                                 VStack {
-                                                                    AsyncImage(url: URL(string: item5.devAppImage)) { devAppImage1 in
-                                                                        devAppImage1
+                                                                    AsyncImage(url: URL(string: item6.otherImage)) { otherImage1 in
+                                                                        otherImage1
                                                                             .resizable()
                                                                             .scaledToFit()
                                                                             .cornerRadius(14.3)
@@ -539,19 +548,19 @@ struct ContentView: View {
                                                                             .foregroundColor(Color.randomColor)
                                                                     }
                                                                     Button("INSTALL") {
-                                                                        openURL(URL(string: item5.devAppLink)!)
+                                                                        openURL(URL(string: item6.otherLink)!)
                                                                         Haptics.shared.play(.light)
                                                                     }
                                                                         .buttonStyle(installButton())
                                                                 }
-                                                                Text(item5.devAppDetail)
+                                                                Text(item6.otherDetail)
                                                             }
                                                                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                                                                .navigationBarTitle("\(item5.devAppName) (\(item5.devAppVersion))", displayMode: .inline)) {
+                                                                        .navigationBarTitle("\(item6.otherName) (\(item6.otherVersion))", displayMode: .inline)) {
                                                             VStack {
                                                                 if reloadImages == 0 {
-                                                                    AsyncImage(url: URL(string: item5.devAppImage)) { devAppImage2 in
-                                                                        devAppImage2
+                                                                    AsyncImage(url: URL(string: item6.otherImage)) { otherImage2 in
+                                                                        otherImage2
                                                                             .resizable()
                                                                             .scaledToFit()
                                                                             .cornerRadius(14.3)
@@ -567,8 +576,8 @@ struct ContentView: View {
                                                                             .foregroundColor(Color.randomColor)
                                                                     }
                                                                 } else {
-                                                                    AsyncImage(url: URL(string: item5.devAppImage)) { devAppImage2 in
-                                                                        devAppImage2
+                                                                    AsyncImage(url: URL(string: item6.otherImage)) { otherImage2 in
+                                                                        otherImage2
                                                                             .resizable()
                                                                             .scaledToFit()
                                                                             .cornerRadius(14.3)
@@ -584,14 +593,14 @@ struct ContentView: View {
                                                                             .foregroundColor(Color.randomColor)
                                                                     }
                                                                 }
-                                                                Text("\(item5.devAppName)")
+                                                                Text("\(item6.otherName)")
                                                                     .font(.title3)
                                                                     .fontWeight(.semibold)
                                                                     .foregroundColor(Color.white)
                                                             }
                                                         }
                                                         Button("INSTALL") {
-                                                            openURL(URL(string: item5.devAppLink)!)
+                                                            openURL(URL(string: item6.otherLink)!)
                                                             Haptics.shared.play(.light)
                                                         }
                                                             .buttonStyle(installButton())
@@ -600,10 +609,10 @@ struct ContentView: View {
                                             }
                                         }
                                     }
-                                    .frame(minWidth: 100, maxWidth: .infinity, minHeight: 205, maxHeight: 205)
-                                    .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing))
-                                    .clipShape(RoundedRectangle(cornerRadius: 30))
-                                    .padding(.horizontal)
+                                        .frame(height: 205)
+                                        .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing))
+                                        .clipShape(RoundedRectangle(cornerRadius: 30))
+                                        .padding(.horizontal)
                                 }
                             }
                             .listRowSeparatorTint(.clear)
@@ -801,14 +810,14 @@ struct ContentView: View {
             welcomeView().interactiveDismissDisabled()
         }
         .accentColor(Color.mainColor)
-        .onAppear(perform: {isViewLoading = true; listLoadData(); AOTDloadData(); featuredJailbreakLoadData(); featuredTweakLoadData(); featuredDevAppLoadData(); AltAppsUpdateLoadData()})
+        .onAppear(perform: {isViewLoading = true; listLoadData(); AOTDloadData(); featuredJailbreakLoadData(); featuredTweakLoadData(); featuredOtherLoadData(); AltAppsUpdateLoadData()})
     }
     func loadData() {
         listLoadData()
         AOTDloadData()
         featuredJailbreakLoadData()
         featuredTweakLoadData()
-        featuredDevAppLoadData()
+        featuredOtherLoadData()
         AltAppsUpdateLoadData()
     }
     func listLoadData() {
@@ -883,23 +892,22 @@ struct ContentView: View {
             print("Fetch failed: \(error5?.localizedDescription ?? "Unknown error")")
         }.resume()
     }
-    func featuredDevAppLoadData() {
-        guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/featured_devapp_1.2.0") else {
+    func featuredOtherLoadData() {
+        guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/featured_other_1.2.0") else {
             print("Invalid URL")
             return
         }
-        let request5 = URLRequest(url: url)
-        URLSession.shared.dataTask(with: request5) { data6, response6, error6 in
-            if let data6 = data6 {
-                if let decodedResponse6 = try? JSONDecoder().decode(devAppResponse.self, from: data6) {
+        let request6 = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request6) { data7, response7, error7 in
+            if let data7 = data7 {
+                if let decodedResponse7 = try? JSONDecoder().decode(otherResponse.self, from: data7) {
                     DispatchQueue.main.async {
-                        devAppResults = decodedResponse6.devAppResults
-                        isViewLoading = false
+                        otherResults = decodedResponse7.otherResults
                     }
                     return
                 }
             }
-            print("Fetch failed: \(error6?.localizedDescription ?? "Unknown error")")
+            print("Fetch failed: \(error7?.localizedDescription ?? "Unknown error")")
         }.resume()
     }
     func AltAppsUpdateLoadData() {
@@ -919,6 +927,7 @@ struct ContentView: View {
             }
             print("Fetch failed: \(error2?.localizedDescription ?? "Unknown error")")
         }.resume()
+        isViewLoading = false
     }
 }
 
