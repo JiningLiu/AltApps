@@ -155,7 +155,6 @@ extension Color {
     static var mainColor = Color(UIColor.systemIndigo)
 }
 
-
 struct ContentView: View {
     @State private var isViewLoading = false
     @State var appResults = [listResult]()
@@ -170,6 +169,12 @@ struct ContentView: View {
     @State var showSettingsView = false
     @State var updateAvailable = true
     @Environment(\.openURL) var openURL
+    
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.systemIndigo]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.systemIndigo]
+    }
+    
     var body: some View {
         ZStack {
             NavigationView {
