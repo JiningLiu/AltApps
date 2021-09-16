@@ -1,6 +1,5 @@
 {
   "otherResults": [
     {"otherID": 1301007001, "otherName":"Taptic", "otherVersion":"v1.0.1", "otherLink":"altstore://install?url=https://github.com/JiningLiu/AltApps-IPAs/releases/download/Taptic1.0.1/Taptic.ipa", "otherImage":"https://i.ibb.co/gJggvLj/App-Icon.png", "otherDetail":"Taptic is an app made by the AltApps devs! It's an app when everytime you tap the screen, your device will send a haptic feedback. "}, 
-    {"otherID": 1301100000, "otherName":"Test", "otherVersion":"v0.0.1", "otherLink":"apple.com", "otherImage":"https://i.ibb.co/gJggvLj/App-Icon.png", "otherDetail":"Test App Card"}, 
     {"otherID": 1302008001, "otherName":"DemoLoop", "otherVersion":"v4.8", "otherLink":"itms-services://?action=download-manifest&url=https://demoupdate.apple.com/install/4.8/demoupdate.plist", "otherImage":"https://static.wikia.nocookie.net/ipod/images/1/16/ScreenSaverApp.png/revision/latest/scale-to-width-down/180?cb=20201213003652", "otherDetail":"This is the same app you see in Apple Stores labled as ''Screen Saver'', it plays and loops the video stored at ''Root:/private/var/mobile/Demo.mov''. "}
 ]}
