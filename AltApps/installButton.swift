@@ -1,6 +1,6 @@
 //
 //  installButton.swift
-//  installButton
+//  AltApps
 //
 //  Created by JingJing on 8/8/21.
 //

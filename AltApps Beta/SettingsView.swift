@@ -138,8 +138,10 @@ struct SettingsView: View {
                     .alert("Reset All Settings?", isPresented: $resetAppAlert) {
                         Button("Yes", role: .destructive) {
                             UserDefaults.standard.showFeaturedView = 0
-                            UserDefaults.standard.showWelcomeScreen = true
                             UserDefaults.standard.refreshImagesToggle = true
+                            UserDefaults.standard.showWelcomeScreen = true
+                            UserDefaults.standard.previousVersion = "noResults"
+                            UserDefaults.standard.showUpdate = false
                             resetApp = true
                             resetAppAlert = false
                         }

@@ -1,6 +1,6 @@
 //
 //  customButtonSmall.swift
-//  customButtonSmall
+//  AltApps
 //
 //  Created by JingJing on 8/26/21.
 //

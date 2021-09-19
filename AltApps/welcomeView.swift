@@ -1,9 +1,8 @@
 //
-//  welcomeView.swift.swift
 //  welcomeView.swift
+//  AltApps
 //
 //  Created by JingJing on 9/12/21.
-//  Copyright © 2021 JingJing. All rights reserved.
 //
 
 import SwiftUI
