@@ -6,4 +6,4 @@ Hooray! AltApps is completely free, no ads, and is completely open source! Welco
 AltApps has dedicated versions for iOS 14 and iOS 15! iOS 13 support coming soon!
 
 
-![Untitled-mockup-3 copy](https://user-images.githubusercontent.com/88249105/130368163-b833ee7e-1c92-4c8b-bf53-0bf678a2324a.png)
+![Untitled-mockup](https://user-images.githubusercontent.com/88249105/133949736-0304d68e-c96f-43e3-a2a5-8d26a32c70e7.png)
