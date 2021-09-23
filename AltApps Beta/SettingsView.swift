@@ -24,6 +24,7 @@ struct SettingsView: View {
     @State private var resetApp = false
     @State private var reloadAlert = false
     @State private var reinstallAlert = false
+    @State var submitApp = false
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.openURL) var openURL
     var body: some View {
@@ -126,10 +127,23 @@ struct SettingsView: View {
                     }
                     .disabled(!MailView.canSendMail)
                     .sheet(isPresented: $showMailView) {
-                        MailView(data: $mailData) { result in
-                            print(result)
+                        NavigationView {
+                            List {
+                                Button(action: {
+                                    presentationMode.wrappedValue.dismiss()
+                                    submitApp = true
+                                }, label: {
+                                    HStack {
+                                        Image(systemName: "square.and.arrow.up")
+                                        Text("Submit/Suggest an App")
+                                    }
+                                })
+                            }
                         }
                     }
+                  .sheet(isPresented: $submitApp) {
+                       // Webview w/ link https://4ohyds73uh6.typeform.com/to/j1VxaKM1
+                  }
                 }
                 Section(footer: Text("©2021 AltApps, all rights reserved")) {
                     Button("Reset All Settings", role: .destructive) {
