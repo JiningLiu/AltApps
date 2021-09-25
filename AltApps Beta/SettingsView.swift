@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+extension Color {
+    init(hex: Int, opacity: Double = 1.0) {
+        let red = Double((hex & 0xff0000) >> 16) / 255.0
+        let green = Double((hex & 0xff00) >> 8) / 255.0
+        let blue = Double((hex & 0xff) >> 0) / 255.0
+        self.init(.sRGB, red: red, green: green, blue: blue, opacity: opacity)
+    }
+}
+
 struct ComposeMailData {
   let subject: String
   let recipients: [String]?
@@ -24,7 +33,10 @@ struct SettingsView: View {
     @State private var resetApp = false
     @State private var reloadAlert = false
     @State private var reinstallAlert = false
-    @State var submitApp = false
+    @State var showSafari = false
+    @State var showSafari2 = false
+    @State var showSafari3 = false
+    @State var showSafari4 = false
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.openURL) var openURL
     var body: some View {
@@ -125,25 +137,68 @@ struct SettingsView: View {
                     Button("Contact Us") {
                         showMailView.toggle()
                     }
-                    .disabled(!MailView.canSendMail)
                     .sheet(isPresented: $showMailView) {
                         NavigationView {
                             List {
+                                Group {
+                                    Button(action: {
+                                        showSafari.toggle()
+                                    }, label: {
+                                        HStack {
+                                            Image(systemName: "square.and.arrow.up")
+                                            Text("Submit/Suggest an App")
+                                        }
+                                    })
+                                    .foregroundColor(.mainColor)
+                                    .sheet(isPresented: $showSafari) {
+                                        SFSafariViewWrapper(url: URL(string: "https://4ohyds73uh6.typeform.com/to/j1VxaKM1")!)
+                                            .ignoresSafeArea()
+                                    }
+                                    Button(action: {
+                                        showSafari2.toggle()
+                                    }, label: {
+                                        HStack {
+                                            Image(systemName: "exclamationmark.bubble")
+                                            Text("Report a Bug")
+                                        }
+                                    })
+                                    .foregroundColor(.mainColor)
+                                    .sheet(isPresented: $showSafari2) {
+                                        SFSafariViewWrapper(url: URL(string: "https://4ohyds73uh6.typeform.com/to/UCmU799C")!)
+                                            .ignoresSafeArea()
+                                    }
+                                    Button(action: {
+                                        showSafari3.toggle()
+                                    }, label: {
+                                        HStack {
+                                            Image(systemName: "ellipsis.circle")
+                                            Text("Tell Us Something Else")
+                                        }
+                                    })
+                                    .foregroundColor(.mainColor)
+                                    .sheet(isPresented: $showSafari3) {
+                                        SFSafariViewWrapper(url: URL(string: "https://4ohyds73uh6.typeform.com/to/bwZWngco")!)
+                                            .ignoresSafeArea()
+                                    }
+                                }
                                 Button(action: {
-                                    presentationMode.wrappedValue.dismiss()
-                                    submitApp = true
+                                    showSafari4.toggle()
                                 }, label: {
                                     HStack {
-                                        Image(systemName: "square.and.arrow.up")
-                                        Text("Submit/Suggest an App")
+                                        Image(systemName: "dollarsign.circle")
+                                        Text("Donate")
                                     }
                                 })
+                                .foregroundColor(.mainColor)
+                                .sheet(isPresented: $showSafari4) {
+                                    SFSafariViewWrapper(url: URL(string: "https://www.buymeacoffee.com/altapps")!)
+                                        .ignoresSafeArea()
+                                }
                             }
+                            .navigationBarItems(leading: Button("Done") {showMailView = false})
+                            .navigationBarTitle("Contact Us")
                         }
                     }
-                  .sheet(isPresented: $submitApp) {
-                       // Webview w/ link https://4ohyds73uh6.typeform.com/to/j1VxaKM1
-                  }
                 }
                 Section(footer: Text("©2021 AltApps, all rights reserved")) {
                     Button("Reset All Settings", role: .destructive) {

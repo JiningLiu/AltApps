@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CC02850326C090180037AB73 /* installButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02850226C090180037AB73 /* installButton.swift */; };
+		CC30965E26FD578C001962E3 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC30965D26FD578C001962E3 /* WebView.swift */; };
 		CC3831BB26D8772400FDBF78 /* InformationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8E0EE826BA288C004CEDC9 /* InformationDetailView.swift */; };
 		CC3831C526D87BDD00FDBF78 /* customButtonSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3831C426D87BDD00FDBF78 /* customButtonSmall.swift */; };
 		CC3831C626D87BDD00FDBF78 /* customButtonSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3831C426D87BDD00FDBF78 /* customButtonSmall.swift */; };
@@ -27,7 +28,6 @@
 		CCC403CF26EC4CED001B733A /* installButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02850226C090180037AB73 /* installButton.swift */; };
 		CCEB553C26EEAF5C002EE20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEB553A26EEAF5C002EE20A /* AppDelegate.swift */; };
 		CCEB553D26EEAF5C002EE20A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEB553B26EEAF5C002EE20A /* SceneDelegate.swift */; };
-		CCF662B626C87C59004396B5 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF662B526C87C59004396B5 /* MailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		CC02850226C090180037AB73 /* installButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = installButton.swift; sourceTree = "<group>"; };
+		CC30965D26FD578C001962E3 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		CC3831C426D87BDD00FDBF78 /* customButtonSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButtonSmall.swift; sourceTree = "<group>"; };
 		CC383D8626B1EFC400A9ED31 /* welcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcomeView.swift; sourceTree = "<group>"; };
 		CC3BED0826F7E7B500E96C3E /* updateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateView.swift; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		CCB912F226AE10FA00625119 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCEB553A26EEAF5C002EE20A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../Xcode 11 Test App/Xcode 11 Test App/AppDelegate.swift"; sourceTree = "<group>"; };
 		CCEB553B26EEAF5C002EE20A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = "../../Xcode 11 Test App/Xcode 11 Test App/SceneDelegate.swift"; sourceTree = "<group>"; };
-		CCF662B526C87C59004396B5 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,7 @@
 				CC8E0EBC26BA25E1004CEDC9 /* ContentView.swift */,
 				CC86A19526BC2C650024D2E1 /* SettingsView.swift */,
 				CC55B59E26CAC194002EF30E /* AddCustomAppView.swift */,
-				CCF662B526C87C59004396B5 /* MailView.swift */,
+				CC30965D26FD578C001962E3 /* WebView.swift */,
 				CC6400D426C1DF14001AC9F6 /* AltApps-Beta-Info.plist */,
 				CC8E0EBE26BA25E3004CEDC9 /* Assets.xcassets */,
 				CC8E0EC026BA25E3004CEDC9 /* Preview Content */,
@@ -305,13 +305,13 @@
 				CC8E0EBD26BA25E1004CEDC9 /* ContentView.swift in Sources */,
 				CC86A19626BC2C660024D2E1 /* SettingsView.swift in Sources */,
 				CC3831C626D87BDD00FDBF78 /* customButtonSmall.swift in Sources */,
-				CCF662B626C87C59004396B5 /* MailView.swift in Sources */,
 				CC55B59F26CAC194002EF30E /* AddCustomAppView.swift in Sources */,
 				CC8E0EBB26BA25E1004CEDC9 /* AltApps_BetaApp.swift in Sources */,
 				CC8E0EE126BA270D004CEDC9 /* welcomeView.swift in Sources */,
 				CC3831BB26D8772400FDBF78 /* InformationDetailView.swift in Sources */,
 				CC3BED0926F7E7B500E96C3E /* updateView.swift in Sources */,
 				CC02850326C090180037AB73 /* installButton.swift in Sources */,
+				CC30965E26FD578C001962E3 /* WebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
