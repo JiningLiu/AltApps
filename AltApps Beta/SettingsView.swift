@@ -24,7 +24,7 @@ struct ComposeMailData {
 
 struct SettingsView: View {
     @State var viewStyleChangerSettingsView = UserDefaults.standard.showFeaturedView
-    @State var refreshImages = UserDefaults.standard.refreshImagesToggle
+    @State var refreshImages: Bool = UserDefaults.standard.refreshImagesToggle
     @State private var mailData = ComposeMailData(subject: "Contact Us",
                                                     recipients: ["altappsapp@gmail.com"],
                                                     message: "")
@@ -37,6 +37,7 @@ struct SettingsView: View {
     @State var showSafari2 = false
     @State var showSafari3 = false
     @State var showSafari4 = false
+    @State var settingChanged = false
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.openURL) var openURL
     var body: some View {
@@ -108,9 +109,11 @@ struct SettingsView: View {
                                 if refreshImages {
                                     refreshImages = false
                                     UserDefaults.standard.refreshImagesToggle = false
+                                    settingChanged = true
                                 } else {
                                     refreshImages = true
                                     UserDefaults.standard.refreshImagesToggle = true
+                                    settingChanged = true
                                 }
                             }
                                 .foregroundColor(Color.mainColor)
@@ -119,9 +122,11 @@ struct SettingsView: View {
                                 if refreshImages {
                                     refreshImages = false
                                     UserDefaults.standard.refreshImagesToggle = false
+                                    settingChanged = true
                                 } else {
                                     refreshImages = true
                                     UserDefaults.standard.refreshImagesToggle = true
+                                    settingChanged = true
                                 }
                             }
                                 .foregroundColor(Color.blue)
@@ -130,6 +135,11 @@ struct SettingsView: View {
                         if refreshImages {
                             Image(systemName: "checkmark")
                                 .foregroundColor(Color.mainColor)
+                        }
+                    }
+                    .alert("Setting Changed", isPresented: $settingChanged) {
+                        Button("Dismiss", role: .cancel) {
+                            //
                         }
                     }
                 }

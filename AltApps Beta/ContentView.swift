@@ -187,13 +187,16 @@ struct ContentView: View {
     @State var AltAppsRawResults = [AltAppsUpdateResult]()
     @State var showWelcomeView = UserDefaults.standard.showWelcomeScreen
     @State var showUpdateView = UserDefaults.standard.showUpdate
-    @State var refreshImagesVar = UserDefaults.standard.refreshImagesToggle
     @State var reloadImages: Int = 0
     @State var showAddAppView = false
     @State var showSettingsView = false
     @State var updateAvailable = true
     @State var isReloading = false
     @State var showAllApps = false
+    @State var addAppURL = ""
+    @State var testString = ""
+    @State var testInt = 1
+    @State var testBool = false
     @Environment(\.openURL) var openURL
     @Environment(\.presentationMode) var presentationMode
     init() {
@@ -203,7 +206,10 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             NavigationView {
-                VStack {
+                ZStack {
+                    if showAddAppView {
+                        AlertControlView(textString: $addAppURL, showAlert: $showAddAppView, title: "Install Other Apps", message: "Enter direct download link below")
+                    }
                     if UserDefaults.standard.showFeaturedView == 0 {
                         ZStack {
                             VStack {
@@ -749,7 +755,7 @@ struct ContentView: View {
                                             }
                                             Button("Refresh") {
                                                 loadData()
-                                                if refreshImagesVar {
+                                                if UserDefaults.standard.refreshImagesToggle {
                                                     if reloadImages == 0 {
                                                         reloadImages = 1
                                                     } else {
@@ -934,9 +940,6 @@ struct ContentView: View {
         }
         .sheet(isPresented: $showSettingsView) {
             SettingsView()
-        }
-        .sheet(isPresented: $showAddAppView) {
-            AddCustomAppView()
         }
         .sheet(isPresented: $showWelcomeView) {
             welcomeView()
