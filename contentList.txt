@@ -1,5 +1,5 @@
 {
-  "dataCollected": [
+  "appResults": [
     {"appID": 1101002001, "appListName":"unc0ver", "appVersion":"v6.2.0", "installLink":"altstore://install?url=https://unc0ver.dev/downloads/6.2.0/15e18e455ca3971433261443a42355ee883a2092/unc0ver_Release_6.2.0.ipa", "imageLink":"https://i.ibb.co/PWL1X92/uncover-unc0ver-Icon-app-200px-1.png"},
     {"appID": 1102004001, "appListName":"Oddysey", "appVersion":"v1.3.3", "installLink":"altstore://install?url=https://github.com/Odyssey-Team/Odyssey/releases/download/1.3.3/Odyssey-1.3.3.ipa", "imageLink":"https://i.ibb.co/LQTrhnx/9-E2-B51-B7-3986-4-C55-8-A0-C-6-CCAA9-DCD90-C.jpg"},
     {"appID": 1103005002, "appListName":"Taurine", "appVersion":"v1.1.1", "installLink":"altstore://install?url=https://github.com/Odyssey-Team/Taurine/releases/download/1.1.1/Taurine-1.1.1.ipa", "imageLink":"https://i.ibb.co/CPmdk17/D2-FDE203-9-C35-4-CC0-A9-EA-2542-E64-C54-AB.jpg"},
