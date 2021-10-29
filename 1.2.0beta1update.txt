@@ -1,4 +1,4 @@
 {
   "AltAppsRawResults": [
-    {"UpdateAppID": 1001001003, "AltAppsVersion":"v1.2.0-beta", "AltAppsLink":"altstore://install?url=https://rebrand.ly/altapps_app-install-link"}
+    {"UpdateAppID": 1001001003, "AltAppsVersion":"v1.2.0-beta3", "AltAppsLink":"https://github.com/JiningLiu/AltApps/releases/tag/v1.2.0-beta3"}
 ]}
