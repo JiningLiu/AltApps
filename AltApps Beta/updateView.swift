@@ -28,8 +28,7 @@ struct updateView: View {
                             .foregroundColor(.mainColor)
                     }
                     VStack(alignment: .leading) {
-                        InformationDetailView(title: "Refresh", subTitle: "Tap on the refresh button at the bottom of the page to refresh.", imageName: "arrow.clockwise")
-                        InformationDetailView(title: "App List", subTitle: "A full app list is now available for featured view, located at the bottom of the page.", imageName: "list.bullet")
+                        InformationDetailView(title: "Refresh", subTitle: "Pull down from the top to refresh in any view!", imageName: "arrow.clockwise")
                     }
                 Spacer()
                 Button(action: {UserDefaults.standard.showUpdate = false; presentationMode.wrappedValue.dismiss()}, label: {Text("Continue").customButtonSmall()})

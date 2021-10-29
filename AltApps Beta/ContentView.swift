@@ -197,6 +197,7 @@ struct ContentView: View {
     @State var testString = ""
     @State var testInt = 1
     @State var testBool = false
+    @State var invalidURL = false
     @Environment(\.openURL) var openURL
     @Environment(\.presentationMode) var presentationMode
     init() {
@@ -207,472 +208,155 @@ struct ContentView: View {
         ZStack {
             NavigationView {
                 ZStack {
-                    if showAddAppView {
-                        AlertControlView(textString: $addAppURL, showAlert: $showAddAppView, title: "Install Other Apps", message: "Enter direct download link below")
-                    }
                     if UserDefaults.standard.showFeaturedView == 0 {
                         ZStack {
                             VStack {
-                                ScrollView {
-                                    ForEach(AltAppsRawResults, id: \.UpdateAppID) { item1 in
-                                        if item1.AltAppsVersion != "v1.2.0-beta" {
+                                RefreshableScrollView(onRefresh: { done in
+                                    Haptics.shared.play(.light)
+                                    isReloading = true
+                                    loadData()
+                                    done()
+                                }) {
+                                    ScrollView {
+                                        ForEach(AltAppsRawResults, id: \.UpdateAppID) { item1 in
+                                            if item1.AltAppsVersion != "v1.2.0-beta2" {
+                                                HStack {
+                                                    Text("Update Available")
+                                                        .font(.title)
+                                                        .fontWeight(.semibold)
+                                                        .foregroundColor(Color.mainColor)
+                                                        .padding(.horizontal)
+                                                    Spacer()
+                                                }
+                                                VStack {
+                                                    HStack {
+                                                        Spacer()
+                                                        Image("AltAppsIcon")
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .cornerRadius(15.4)
+                                                            .frame(width: 70, height: 70, alignment: .center)
+                                                            .shadow(radius: 5)
+                                                            .padding(EdgeInsets(top: 7.5, leading: 0, bottom: 5, trailing: 0))
+                                                        Spacer()
+                                                    }
+                                                    Text("AltApps \(item1.AltAppsVersion)")
+                                                        .foregroundColor(Color.white)
+                                                        .fontWeight(.semibold)
+                                                    Button("INSTALL") {
+                                                        openURL(URL(string: item1.AltAppsLink)!)
+                                                        Haptics.shared.play(.light)
+                                                    }
+                                                        .buttonStyle(installButton())
+                                                        .padding(.bottom, 7.5)
+                                                }
+                                                .padding(.vertical, 10)
+                                                .background(Color.mainColor)
+                                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                                                .frame(maxWidth: .infinity)
+                                                .padding(.horizontal)
+                                                .padding(.bottom, 5)
+                                            }
+                                        }
+                                        Group {
                                             HStack {
-                                                Text("Update Available")
+                                                Text("App of The Week")
                                                     .font(.title)
                                                     .fontWeight(.semibold)
-                                                    .foregroundColor(Color.mainColor)
+                                                    .gradientForeground(colors: [.red, .yellow])
                                                     .padding(.horizontal)
                                                 Spacer()
                                             }
-                                            VStack {
-                                                HStack {
-                                                    Spacer()
-                                                    Image("AltAppsIcon")
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .cornerRadius(15.4)
-                                                        .frame(width: 70, height: 70, alignment: .center)
-                                                        .shadow(radius: 5)
-                                                        .padding(EdgeInsets(top: 7.5, leading: 0, bottom: 5, trailing: 0))
-                                                    Spacer()
+                                            ForEach(aotdResult, id: \.AOTDid) { item2 in
+                                                VStack {
+                                                    HStack {
+                                                        Spacer()
+                                                        if reloadImages == 0 {
+                                                            AsyncImage(url: URL(string: item2.AOTDimage)) { aotdAppImage in
+                                                                aotdAppImage
+                                                                    .resizable()
+                                                                    .scaledToFit()
+                                                                    .cornerRadius(15.4)
+                                                                    .frame(width: 70, height: 70, alignment: .center)
+                                                                    .shadow(radius: 5)
+                                                            } placeholder: {
+                                                                Image(systemName: "app.fill")
+                                                                    .resizable()
+                                                                    .scaledToFit()
+                                                                    .cornerRadius(15.4)
+                                                                    .frame(width: 70, height: 70, alignment: .center)
+                                                                    .shadow(radius: 5)
+                                                                    .foregroundColor(Color.randomColor)
+                                                            }
+                                                            .padding(EdgeInsets(top: 7.5, leading: 0, bottom: 5, trailing: 0))
+                                                        } else {
+                                                            AsyncImage(url: URL(string: item2.AOTDimage)) { aotdAppImage in
+                                                                aotdAppImage
+                                                                    .resizable()
+                                                                    .scaledToFit()
+                                                                    .cornerRadius(15.4)
+                                                                    .frame(width: 70, height: 70, alignment: .center)
+                                                                    .shadow(radius: 5)
+                                                            } placeholder: {
+                                                                Image(systemName: "app.fill")
+                                                                    .resizable()
+                                                                    .scaledToFit()
+                                                                    .cornerRadius(15.4)
+                                                                    .frame(width: 70, height: 70, alignment: .center)
+                                                                    .shadow(radius: 5)
+                                                                    .foregroundColor(Color.randomColor)
+                                                            }
+                                                                .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                                        }
+                                                        Spacer()
+                                                    }
+                                                    Text(item2.AOTDname)
+                                                        .foregroundColor(Color.white)
+                                                        .fontWeight(.semibold)
+                                                    Button("INSTALL") {
+                                                        openURL(URL(string: item2.AOTDinstall)!)
+                                                        Haptics.shared.play(.light)
+                                                    }
+                                                        .buttonStyle(installButton())
+                                                        .padding(.bottom, 7.5)
                                                 }
-                                                Text("AltApps \(item1.AltAppsVersion)")
-                                                    .foregroundColor(Color.white)
+                                                .padding(.vertical, 10)
+                                            }
+                                                .background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.yellow]), startPoint: .leading, endPoint: .trailing))
+                                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                                                .frame(maxWidth: .infinity)
+                                                .padding(.horizontal)
+                                                .padding(.bottom, 5)
+                                        }
+                                        Group {
+                                            HStack {
+                                                Text("Jailbreak")
+                                                    .font(.title2)
                                                     .fontWeight(.semibold)
-                                                Button("INSTALL") {
-                                                    openURL(URL(string: item1.AltAppsLink)!)
-                                                    Haptics.shared.play(.light)
-                                                }
-                                                    .buttonStyle(installButton())
-                                                    .padding(.bottom, 7.5)
+                                                    .gradientForeground(colors: [.teal, .green])
+                                                    .padding(.horizontal)
+                                                    .padding(.bottom, 5)
+                                                Spacer()
                                             }
-                                            .padding(.vertical, 10)
-                                            .background(Color.mainColor)
-                                            .clipShape(RoundedRectangle(cornerRadius: 25))
-                                            .frame(maxWidth: .infinity)
-                                            .padding(.horizontal)
-                                            .padding(.bottom, 5)
-                                        }
-                                    }
-                                    Group {
-                                        HStack {
-                                            Text("App of The Week")
-                                                .font(.title)
-                                                .fontWeight(.semibold)
-                                                .gradientForeground(colors: [.red, .yellow])
-                                                .padding(.horizontal)
-                                            Spacer()
-                                        }
-                                        ForEach(aotdResult, id: \.AOTDid) { item2 in
-                                            VStack {
+                                            ScrollView(.horizontal, showsIndicators: false) {
                                                 HStack {
-                                                    Spacer()
-                                                    if reloadImages == 0 {
-                                                        AsyncImage(url: URL(string: item2.AOTDimage)) { aotdAppImage in
-                                                            aotdAppImage
+                                                    ForEach(jailbreakResults, id: \.jailbreakID) { item3 in
+                                                        ZStack {
+                                                            Image(systemName: "square.fill")
                                                                 .resizable()
                                                                 .scaledToFit()
-                                                                .cornerRadius(15.4)
-                                                                .frame(width: 70, height: 70, alignment: .center)
+                                                                .foregroundColor(Color.clear)
+                                                                .background(LinearGradient(gradient: Gradient(colors: [Color.teal, Color.green]), startPoint: .leading, endPoint: .trailing))
+                                                                .clipShape(RoundedRectangle(cornerRadius: 18))
+                                                                .frame(width: 175, height: 175)
+                                                                .padding()
                                                                 .shadow(radius: 5)
-                                                        } placeholder: {
-                                                            Image(systemName: "app.fill")
-                                                                .resizable()
-                                                                .scaledToFit()
-                                                                .cornerRadius(15.4)
-                                                                .frame(width: 70, height: 70, alignment: .center)
-                                                                .shadow(radius: 5)
-                                                                .foregroundColor(Color.randomColor)
-                                                        }
-                                                        .padding(EdgeInsets(top: 7.5, leading: 0, bottom: 5, trailing: 0))
-                                                    } else {
-                                                        AsyncImage(url: URL(string: item2.AOTDimage)) { aotdAppImage in
-                                                            aotdAppImage
-                                                                .resizable()
-                                                                .scaledToFit()
-                                                                .cornerRadius(15.4)
-                                                                .frame(width: 70, height: 70, alignment: .center)
-                                                                .shadow(radius: 5)
-                                                        } placeholder: {
-                                                            Image(systemName: "app.fill")
-                                                                .resizable()
-                                                                .scaledToFit()
-                                                                .cornerRadius(15.4)
-                                                                .frame(width: 70, height: 70, alignment: .center)
-                                                                .shadow(radius: 5)
-                                                                .foregroundColor(Color.randomColor)
-                                                        }
-                                                            .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-                                                    }
-                                                    Spacer()
-                                                }
-                                                Text(item2.AOTDname)
-                                                    .foregroundColor(Color.white)
-                                                    .fontWeight(.semibold)
-                                                Button("INSTALL") {
-                                                    openURL(URL(string: item2.AOTDinstall)!)
-                                                    Haptics.shared.play(.light)
-                                                }
-                                                    .buttonStyle(installButton())
-                                                    .padding(.bottom, 7.5)
-                                            }
-                                            .padding(.vertical, 10)
-                                        }
-                                            .background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.yellow]), startPoint: .leading, endPoint: .trailing))
-                                            .clipShape(RoundedRectangle(cornerRadius: 25))
-                                            .frame(maxWidth: .infinity)
-                                            .padding(.horizontal)
-                                            .padding(.bottom, 5)
-                                    }
-                                    Group {
-                                        HStack {
-                                            Text("Jailbreak")
-                                                .font(.title2)
-                                                .fontWeight(.semibold)
-                                                .gradientForeground(colors: [.teal, .green])
-                                                .padding(.horizontal)
-                                                .padding(.bottom, 5)
-                                            Spacer()
-                                        }
-                                        ScrollView(.horizontal, showsIndicators: false) {
-                                            HStack {
-                                                ForEach(jailbreakResults, id: \.jailbreakID) { item3 in
-                                                    ZStack {
-                                                        Image(systemName: "square.fill")
-                                                            .resizable()
-                                                            .scaledToFit()
-                                                            .foregroundColor(Color.clear)
-                                                            .background(LinearGradient(gradient: Gradient(colors: [Color.teal, Color.green]), startPoint: .leading, endPoint: .trailing))
-                                                            .clipShape(RoundedRectangle(cornerRadius: 18))
-                                                            .frame(width: 175, height: 175)
-                                                            .padding()
-                                                            .shadow(radius: 5)
-                                                        VStack {
-                                                            NavigationLink(destination:
-                                                                HStack {
-                                                                    VStack {
-                                                                        AsyncImage(url: URL(string: item3.jailbreakImage)) { jailbreakImage1 in
-                                                                            jailbreakImage1
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                        } placeholder: {
-                                                                            Image(systemName: "app.fill")
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                                .foregroundColor(Color.randomColor)
-                                                                        }
-                                                                        Button("INSTALL") {
-                                                                            openURL(URL(string: item3.jailbreakLink)!)
-                                                                            Haptics.shared.play(.light)
-                                                                        }
-                                                                            .buttonStyle(installButton())
-                                                                    }
-                                                                    Text(item3.jailbreakDetail)
-                                                                }
-                                                                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                                                                            .navigationBarTitle("\(item3.jailbreakName) (\(item3.jailbreakVersion))", displayMode: .inline)) {
-                                                                VStack {
-                                                                    if reloadImages == 0 {
-                                                                        AsyncImage(url: URL(string: item3.jailbreakImage)) { appImage in
-                                                                            appImage
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                        } placeholder: {
-                                                                            Image(systemName: "app.fill")
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                                .foregroundColor(Color.randomColor)
-                                                                        }
-                                                                        .padding(.bottom, 5)
-                                                                    } else {
-                                                                        AsyncImage(url: URL(string: item3.jailbreakImage)) { appImage in
-                                                                            appImage
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                        } placeholder: {
-                                                                            Image(systemName: "app.fill")
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                                .foregroundColor(Color.randomColor)
-                                                                        }
-                                                                        .padding(.bottom, 5)
-                                                                    }
-                                                                    Text("\(item3.jailbreakName)")
-                                                                        .font(.title3)
-                                                                        .fontWeight(.semibold)
-                                                                        .foregroundColor(Color.mainColor)
-                                                                        .padding(.bottom, 5)
-                                                                }
-                                                            }
-                                                            Button("INSTALL") {
-                                                                openURL(URL(string: item3.jailbreakLink)!)
-                                                                Haptics.shared.play(.light)
-                                                            }
-                                                                .buttonStyle(installButton())
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                            .frame(height: 205)
-                                            .background(LinearGradient(gradient: Gradient(colors: [Color.teal, Color.green]), startPoint: .leading, endPoint: .trailing))
-                                            .clipShape(RoundedRectangle(cornerRadius: 30))
-                                            .padding(.horizontal)
-                                    }
-                                    Group {
-                                        HStack {
-                                            Text("Tweaked Apps")
-                                                .font(.title2)
-                                                .fontWeight(.semibold)
-                                                .gradientForeground(colors: [.mint, .blue])
-                                                .padding(.horizontal)
-                                                .padding(.bottom, 5)
-                                            Spacer()
-                                        }
-                                        ScrollView(.horizontal, showsIndicators: false) {
-                                            HStack {
-                                                ForEach(tweakResults, id: \.tweakID) { item4 in
-                                                    ZStack {
-                                                        Image(systemName: "square.fill")
-                                                            .resizable()
-                                                            .scaledToFit()
-                                                            .foregroundColor(Color.clear)
-                                                            .background(LinearGradient(gradient: Gradient(colors: [Color.mint, Color.blue]), startPoint: .leading, endPoint: .trailing))
-                                                            .clipShape(RoundedRectangle(cornerRadius: 18))
-                                                            .frame(width: 175, height: 175)
-                                                            .padding()
-                                                            .shadow(radius: 5)
-                                                        VStack {
-                                                            NavigationLink(destination:
-                                                                HStack {
-                                                                    VStack {
-                                                                        AsyncImage(url: URL(string: item4.tweakImage)) { tweakImage1 in
-                                                                            tweakImage1
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                        } placeholder: {
-                                                                            Image(systemName: "app.fill")
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                                .foregroundColor(Color.randomColor)
-                                                                        }
-                                                                        Button("INSTALL") {
-                                                                            openURL(URL(string: item4.tweakLink)!)
-                                                                            Haptics.shared.play(.light)
-                                                                        }
-                                                                            .buttonStyle(installButton())
-                                                                    }
-                                                                    Text(item4.tweakDetail)
-                                                                }
-                                                                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                                                                            .navigationBarTitle("\(item4.tweakName) (\(item4.tweakVersion))", displayMode: .inline)) {
-                                                                VStack {
-                                                                    if reloadImages == 0 {
-                                                                        AsyncImage(url: URL(string: item4.tweakImage)) { tweakImage2 in
-                                                                            tweakImage2
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                        } placeholder: {
-                                                                            Image(systemName: "app.fill")
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                                .foregroundColor(Color.randomColor)
-                                                                        }
-                                                                    } else {
-                                                                        AsyncImage(url: URL(string: item4.tweakImage)) { tweakImage2 in
-                                                                            tweakImage2
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                        } placeholder: {
-                                                                            Image(systemName: "app.fill")
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                                .foregroundColor(Color.randomColor)
-                                                                        }
-                                                                    }
-                                                                    Text("\(item4.tweakName)")
-                                                                        .font(.title3)
-                                                                        .fontWeight(.semibold)
-                                                                        .foregroundColor(Color.mainColor)
-                                                                }
-                                                            }
-                                                            Button("INSTALL") {
-                                                                openURL(URL(string: item4.tweakLink)!)
-                                                                Haptics.shared.play(.light)
-                                                            }
-                                                                .buttonStyle(installButton())
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                            .frame(height: 205)
-                                            .background(LinearGradient(gradient: Gradient(colors: [Color.mint, Color.blue]), startPoint: .leading, endPoint: .trailing))
-                                            .clipShape(RoundedRectangle(cornerRadius: 30))
-                                            .padding(.horizontal)
-                                    }
-                                    Group {
-                                        HStack {
-                                            Text("Other Apps")
-                                                .font(.title2)
-                                                .fontWeight(.semibold)
-                                                .gradientForeground(colors: [.blue, .purple])
-                                                .padding(.horizontal)
-                                                .padding(.bottom, 5)
-                                            Spacer()
-                                        }
-                                        ScrollView(.horizontal, showsIndicators: false) {
-                                            HStack {
-                                                ForEach(otherResults, id: \.otherID) { item6 in
-                                                    ZStack {
-                                                        Image(systemName: "square.fill")
-                                                            .resizable()
-                                                            .scaledToFit()
-                                                            .foregroundColor(Color.clear)
-                                                            .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing))
-                                                            .clipShape(RoundedRectangle(cornerRadius: 18))
-                                                            .frame(width: 175, height: 175)
-                                                            .padding()
-                                                            .shadow(radius: 5)
-                                                        VStack {
-                                                            NavigationLink(destination:
-                                                                HStack {
-                                                                    VStack {
-                                                                        AsyncImage(url: URL(string: item6.otherImage)) { otherImage1 in
-                                                                            otherImage1
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                        } placeholder: {
-                                                                            Image(systemName: "app.fill")
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                                .foregroundColor(Color.randomColor)
-                                                                        }
-                                                                        Button("INSTALL") {
-                                                                            openURL(URL(string: item6.otherLink)!)
-                                                                            Haptics.shared.play(.light)
-                                                                        }
-                                                                            .buttonStyle(installButton())
-                                                                    }
-                                                                    Text(item6.otherDetail)
-                                                                }
-                                                                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                                                                            .navigationBarTitle("\(item6.otherName) (\(item6.otherVersion))", displayMode: .inline)) {
-                                                                VStack {
-                                                                    if reloadImages == 0 {
-                                                                        AsyncImage(url: URL(string: item6.otherImage)) { otherImage2 in
-                                                                            otherImage2
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                        } placeholder: {
-                                                                            Image(systemName: "app.fill")
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                                .foregroundColor(Color.randomColor)
-                                                                        }
-                                                                    } else {
-                                                                        AsyncImage(url: URL(string: item6.otherImage)) { otherImage2 in
-                                                                            otherImage2
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                        } placeholder: {
-                                                                            Image(systemName: "app.fill")
-                                                                                .resizable()
-                                                                                .scaledToFit()
-                                                                                .cornerRadius(14.3)
-                                                                                .frame(width: 65, height: 65, alignment: .center)
-                                                                                .shadow(radius: 5)
-                                                                                .foregroundColor(Color.randomColor)
-                                                                        }
-                                                                    }
-                                                                    Text("\(item6.otherName)")
-                                                                        .font(.title3)
-                                                                        .fontWeight(.semibold)
-                                                                        .foregroundColor(Color.white)
-                                                                }
-                                                            }
-                                                            Button("INSTALL") {
-                                                                openURL(URL(string: item6.otherLink)!)
-                                                                Haptics.shared.play(.light)
-                                                            }
-                                                                .buttonStyle(installButton())
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                            .frame(height: 205)
-                                            .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing))
-                                            .clipShape(RoundedRectangle(cornerRadius: 30))
-                                            .padding(.horizontal)
-                                    }
-                                    HStack {
-                                        Button("Show All Apps") {
-                                            showAllApps = true
-                                        }
-                                            .buttonStyle(.bordered)
-                                            .padding(.trailing, 10)
-                                            .sheet(isPresented: $showAllApps) {
-                                                NavigationView {
-                                                    VStack {
-                                                        List {
-                                                            ForEach(appResults, id: \.appID) { item in
+                                                            VStack {
                                                                 NavigationLink(destination:
                                                                     HStack {
                                                                         VStack {
-                                                                            AsyncImage(url: URL(string: item.imageLink)) { appImage in
-                                                                                appImage
+                                                                            AsyncImage(url: URL(string: item3.jailbreakImage)) { jailbreakImage1 in
+                                                                                jailbreakImage1
                                                                                     .resizable()
                                                                                     .scaledToFit()
                                                                                     .cornerRadius(14.3)
@@ -688,84 +372,394 @@ struct ContentView: View {
                                                                                     .foregroundColor(Color.randomColor)
                                                                             }
                                                                             Button("INSTALL") {
-                                                                                openURL(URL(string: item.installLink)!)
+                                                                                openURL(URL(string: item3.jailbreakLink)!)
                                                                                 Haptics.shared.play(.light)
                                                                             }
                                                                                 .buttonStyle(installButton())
                                                                         }
-                                                                        Text(item.appDetail)
+                                                                        Text(item3.jailbreakDetail)
                                                                     }
                                                                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                                                                        .navigationBarTitle(item.appListName, displayMode: .inline)) {
-                                                                    HStack {
+                                                                                .navigationBarTitle("\(item3.jailbreakName) (\(item3.jailbreakVersion))", displayMode: .inline)) {
+                                                                    VStack {
                                                                         if reloadImages == 0 {
-                                                                            AsyncImage(url: URL(string: item.imageLink)) { appImage in
+                                                                            AsyncImage(url: URL(string: item3.jailbreakImage)) { appImage in
                                                                                 appImage
                                                                                     .resizable()
                                                                                     .scaledToFit()
-                                                                                    .cornerRadius(11)
-                                                                                    .frame(width: 50, height: 60, alignment: .center)
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
                                                                                     .shadow(radius: 5)
                                                                             } placeholder: {
                                                                                 Image(systemName: "app.fill")
                                                                                     .resizable()
                                                                                     .scaledToFit()
-                                                                                    .cornerRadius(11)
-                                                                                    .frame(width: 50, height: 60, alignment: .center)
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
+                                                                                    .shadow(radius: 5)
+                                                                                    .foregroundColor(Color.randomColor)
+                                                                            }
+                                                                            .padding(.bottom, 5)
+                                                                        } else {
+                                                                            AsyncImage(url: URL(string: item3.jailbreakImage)) { appImage in
+                                                                                appImage
+                                                                                    .resizable()
+                                                                                    .scaledToFit()
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
+                                                                                    .shadow(radius: 5)
+                                                                            } placeholder: {
+                                                                                Image(systemName: "app.fill")
+                                                                                    .resizable()
+                                                                                    .scaledToFit()
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
+                                                                                    .shadow(radius: 5)
+                                                                                    .foregroundColor(Color.randomColor)
+                                                                            }
+                                                                            .padding(.bottom, 5)
+                                                                        }
+                                                                        Text("\(item3.jailbreakName)")
+                                                                            .font(.title3)
+                                                                            .fontWeight(.semibold)
+                                                                            .foregroundColor(Color.mainColor)
+                                                                            .padding(.bottom, 5)
+                                                                    }
+                                                                }
+                                                                Button("INSTALL") {
+                                                                    openURL(URL(string: item3.jailbreakLink)!)
+                                                                    Haptics.shared.play(.light)
+                                                                }
+                                                                    .buttonStyle(installButton())
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                                .frame(height: 205)
+                                                .background(LinearGradient(gradient: Gradient(colors: [Color.teal, Color.green]), startPoint: .leading, endPoint: .trailing))
+                                                .clipShape(RoundedRectangle(cornerRadius: 30))
+                                                .padding(.horizontal)
+                                        }
+                                        Group {
+                                            HStack {
+                                                Text("Tweaked Apps")
+                                                    .font(.title2)
+                                                    .fontWeight(.semibold)
+                                                    .gradientForeground(colors: [.mint, .blue])
+                                                    .padding(.horizontal)
+                                                    .padding(.bottom, 5)
+                                                Spacer()
+                                            }
+                                            ScrollView(.horizontal, showsIndicators: false) {
+                                                HStack {
+                                                    ForEach(tweakResults, id: \.tweakID) { item4 in
+                                                        ZStack {
+                                                            Image(systemName: "square.fill")
+                                                                .resizable()
+                                                                .scaledToFit()
+                                                                .foregroundColor(Color.clear)
+                                                                .background(LinearGradient(gradient: Gradient(colors: [Color.mint, Color.blue]), startPoint: .leading, endPoint: .trailing))
+                                                                .clipShape(RoundedRectangle(cornerRadius: 18))
+                                                                .frame(width: 175, height: 175)
+                                                                .padding()
+                                                                .shadow(radius: 5)
+                                                            VStack {
+                                                                NavigationLink(destination:
+                                                                    HStack {
+                                                                        VStack {
+                                                                            AsyncImage(url: URL(string: item4.tweakImage)) { tweakImage1 in
+                                                                                tweakImage1
+                                                                                    .resizable()
+                                                                                    .scaledToFit()
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
+                                                                                    .shadow(radius: 5)
+                                                                            } placeholder: {
+                                                                                Image(systemName: "app.fill")
+                                                                                    .resizable()
+                                                                                    .scaledToFit()
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
+                                                                                    .shadow(radius: 5)
+                                                                                    .foregroundColor(Color.randomColor)
+                                                                            }
+                                                                            Button("INSTALL") {
+                                                                                openURL(URL(string: item4.tweakLink)!)
+                                                                                Haptics.shared.play(.light)
+                                                                            }
+                                                                                .buttonStyle(installButton())
+                                                                        }
+                                                                        Text(item4.tweakDetail)
+                                                                    }
+                                                                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                                                                                .navigationBarTitle("\(item4.tweakName) (\(item4.tweakVersion))", displayMode: .inline)) {
+                                                                    VStack {
+                                                                        if reloadImages == 0 {
+                                                                            AsyncImage(url: URL(string: item4.tweakImage)) { tweakImage2 in
+                                                                                tweakImage2
+                                                                                    .resizable()
+                                                                                    .scaledToFit()
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
+                                                                                    .shadow(radius: 5)
+                                                                            } placeholder: {
+                                                                                Image(systemName: "app.fill")
+                                                                                    .resizable()
+                                                                                    .scaledToFit()
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
                                                                                     .shadow(radius: 5)
                                                                                     .foregroundColor(Color.randomColor)
                                                                             }
                                                                         } else {
-                                                                            AsyncImage(url: URL(string: item.imageLink)) { appImage in
-                                                                                appImage
+                                                                            AsyncImage(url: URL(string: item4.tweakImage)) { tweakImage2 in
+                                                                                tweakImage2
                                                                                     .resizable()
                                                                                     .scaledToFit()
-                                                                                    .cornerRadius(11)
-                                                                                    .frame(width: 50, height: 60, alignment: .center)
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
                                                                                     .shadow(radius: 5)
                                                                             } placeholder: {
                                                                                 Image(systemName: "app.fill")
                                                                                     .resizable()
                                                                                     .scaledToFit()
-                                                                                    .cornerRadius(11)
-                                                                                    .frame(width: 50, height: 60, alignment: .center)
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
                                                                                     .shadow(radius: 5)
                                                                                     .foregroundColor(Color.randomColor)
                                                                             }
                                                                         }
-                                                                        Text("\(item.appListName) \(item.appVersion)")
+                                                                        Text("\(item4.tweakName)")
                                                                             .font(.title3)
                                                                             .fontWeight(.semibold)
                                                                             .foregroundColor(Color.mainColor)
                                                                     }
-                                                                    .navigationBarTitle("App List", displayMode: .inline)
                                                                 }
-                                                            }
-                                                        }
-                                                        .toolbar {
-                                                            ToolbarItem(placement: .navigationBarLeading) {
-                                                                Button("Done") {
-                                                                    showAllApps = false
-                                                                    presentationMode.wrappedValue.dismiss()
+                                                                Button("INSTALL") {
+                                                                    openURL(URL(string: item4.tweakLink)!)
+                                                                    Haptics.shared.play(.light)
                                                                 }
+                                                                    .buttonStyle(installButton())
                                                             }
                                                         }
                                                     }
                                                 }
                                             }
-                                            Button("Refresh") {
-                                                loadData()
-                                                if UserDefaults.standard.refreshImagesToggle {
-                                                    if reloadImages == 0 {
-                                                        reloadImages = 1
-                                                    } else {
-                                                        reloadImages = 0
+                                                .frame(height: 205)
+                                                .background(LinearGradient(gradient: Gradient(colors: [Color.mint, Color.blue]), startPoint: .leading, endPoint: .trailing))
+                                                .clipShape(RoundedRectangle(cornerRadius: 30))
+                                                .padding(.horizontal)
+                                        }
+                                        Group {
+                                            HStack {
+                                                Text("Other Apps")
+                                                    .font(.title2)
+                                                    .fontWeight(.semibold)
+                                                    .gradientForeground(colors: [.blue, .purple])
+                                                    .padding(.horizontal)
+                                                    .padding(.bottom, 5)
+                                                Spacer()
+                                            }
+                                            ScrollView(.horizontal, showsIndicators: false) {
+                                                HStack {
+                                                    ForEach(otherResults, id: \.otherID) { item6 in
+                                                        ZStack {
+                                                            Image(systemName: "square.fill")
+                                                                .resizable()
+                                                                .scaledToFit()
+                                                                .foregroundColor(Color.clear)
+                                                                .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing))
+                                                                .clipShape(RoundedRectangle(cornerRadius: 18))
+                                                                .frame(width: 175, height: 175)
+                                                                .padding()
+                                                                .shadow(radius: 5)
+                                                            VStack {
+                                                                NavigationLink(destination:
+                                                                    HStack {
+                                                                        VStack {
+                                                                            AsyncImage(url: URL(string: item6.otherImage)) { otherImage1 in
+                                                                                otherImage1
+                                                                                    .resizable()
+                                                                                    .scaledToFit()
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
+                                                                                    .shadow(radius: 5)
+                                                                            } placeholder: {
+                                                                                Image(systemName: "app.fill")
+                                                                                    .resizable()
+                                                                                    .scaledToFit()
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
+                                                                                    .shadow(radius: 5)
+                                                                                    .foregroundColor(Color.randomColor)
+                                                                            }
+                                                                            Button("INSTALL") {
+                                                                                openURL(URL(string: item6.otherLink)!)
+                                                                                Haptics.shared.play(.light)
+                                                                            }
+                                                                                .buttonStyle(installButton())
+                                                                        }
+                                                                        Text(item6.otherDetail)
+                                                                    }
+                                                                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                                                                                .navigationBarTitle("\(item6.otherName) (\(item6.otherVersion))", displayMode: .inline)) {
+                                                                    VStack {
+                                                                        if reloadImages == 0 {
+                                                                            AsyncImage(url: URL(string: item6.otherImage)) { otherImage2 in
+                                                                                otherImage2
+                                                                                    .resizable()
+                                                                                    .scaledToFit()
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
+                                                                                    .shadow(radius: 5)
+                                                                            } placeholder: {
+                                                                                Image(systemName: "app.fill")
+                                                                                    .resizable()
+                                                                                    .scaledToFit()
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
+                                                                                    .shadow(radius: 5)
+                                                                                    .foregroundColor(Color.randomColor)
+                                                                            }
+                                                                        } else {
+                                                                            AsyncImage(url: URL(string: item6.otherImage)) { otherImage2 in
+                                                                                otherImage2
+                                                                                    .resizable()
+                                                                                    .scaledToFit()
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
+                                                                                    .shadow(radius: 5)
+                                                                            } placeholder: {
+                                                                                Image(systemName: "app.fill")
+                                                                                    .resizable()
+                                                                                    .scaledToFit()
+                                                                                    .cornerRadius(14.3)
+                                                                                    .frame(width: 65, height: 65, alignment: .center)
+                                                                                    .shadow(radius: 5)
+                                                                                    .foregroundColor(Color.randomColor)
+                                                                            }
+                                                                        }
+                                                                        Text("\(item6.otherName)")
+                                                                            .font(.title3)
+                                                                            .fontWeight(.semibold)
+                                                                            .foregroundColor(Color.white)
+                                                                    }
+                                                                }
+                                                                Button("INSTALL") {
+                                                                    openURL(URL(string: item6.otherLink)!)
+                                                                    Haptics.shared.play(.light)
+                                                                }
+                                                                    .buttonStyle(installButton())
+                                                            }
+                                                        }
                                                     }
                                                 }
+                                            }
+                                                .frame(height: 205)
+                                                .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing))
+                                                .clipShape(RoundedRectangle(cornerRadius: 30))
+                                                .padding(.horizontal)
+                                        }
+                                        HStack {
+                                            Button("Show All Apps") {
+                                                showAllApps = true
                                             }
                                                 .buttonStyle(.bordered)
+                                                .padding(.trailing, 10)
+                                                .sheet(isPresented: $showAllApps) {
+                                                    NavigationView {
+                                                        VStack {
+                                                            List {
+                                                                ForEach(appResults, id: \.appID) { item in
+                                                                    NavigationLink(destination:
+                                                                        HStack {
+                                                                            VStack {
+                                                                                AsyncImage(url: URL(string: item.imageLink)) { appImage in
+                                                                                    appImage
+                                                                                        .resizable()
+                                                                                        .scaledToFit()
+                                                                                        .cornerRadius(14.3)
+                                                                                        .frame(width: 65, height: 65, alignment: .center)
+                                                                                        .shadow(radius: 5)
+                                                                                } placeholder: {
+                                                                                    Image(systemName: "app.fill")
+                                                                                        .resizable()
+                                                                                        .scaledToFit()
+                                                                                        .cornerRadius(14.3)
+                                                                                        .frame(width: 65, height: 65, alignment: .center)
+                                                                                        .shadow(radius: 5)
+                                                                                        .foregroundColor(Color.randomColor)
+                                                                                }
+                                                                                Button("INSTALL") {
+                                                                                    openURL(URL(string: item.installLink)!)
+                                                                                    Haptics.shared.play(.light)
+                                                                                }
+                                                                                    .buttonStyle(installButton())
+                                                                            }
+                                                                            Text(item.appDetail)
+                                                                        }
+                                                                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                                                                            .navigationBarTitle(item.appListName, displayMode: .inline)) {
+                                                                        HStack {
+                                                                            if reloadImages == 0 {
+                                                                                AsyncImage(url: URL(string: item.imageLink)) { appImage in
+                                                                                    appImage
+                                                                                        .resizable()
+                                                                                        .scaledToFit()
+                                                                                        .cornerRadius(11)
+                                                                                        .frame(width: 50, height: 60, alignment: .center)
+                                                                                        .shadow(radius: 5)
+                                                                                } placeholder: {
+                                                                                    Image(systemName: "app.fill")
+                                                                                        .resizable()
+                                                                                        .scaledToFit()
+                                                                                        .cornerRadius(11)
+                                                                                        .frame(width: 50, height: 60, alignment: .center)
+                                                                                        .shadow(radius: 5)
+                                                                                        .foregroundColor(Color.randomColor)
+                                                                                }
+                                                                            } else {
+                                                                                AsyncImage(url: URL(string: item.imageLink)) { appImage in
+                                                                                    appImage
+                                                                                        .resizable()
+                                                                                        .scaledToFit()
+                                                                                        .cornerRadius(11)
+                                                                                        .frame(width: 50, height: 60, alignment: .center)
+                                                                                        .shadow(radius: 5)
+                                                                                } placeholder: {
+                                                                                    Image(systemName: "app.fill")
+                                                                                        .resizable()
+                                                                                        .scaledToFit()
+                                                                                        .cornerRadius(11)
+                                                                                        .frame(width: 50, height: 60, alignment: .center)
+                                                                                        .shadow(radius: 5)
+                                                                                        .foregroundColor(Color.randomColor)
+                                                                                }
+                                                                            }
+                                                                            Text("\(item.appListName) \(item.appVersion)")
+                                                                                .font(.title3)
+                                                                                .fontWeight(.semibold)
+                                                                                .foregroundColor(Color.mainColor)
+                                                                        }
+                                                                        .navigationBarTitle("App List", displayMode: .inline)
+                                                                    }
+                                                                }
+                                                            }
+                                                            .toolbar {
+                                                                ToolbarItem(placement: .navigationBarLeading) {
+                                                                    Button("Done") {
+                                                                        showAllApps = false
+                                                                        presentationMode.wrappedValue.dismiss()
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                         }
                                         .padding(.top, 10)
+                                    }
                                 }
                             }
                         }
@@ -774,7 +768,14 @@ struct ContentView: View {
                                 Button(action: {showSettingsView = true}, label: {Image(systemName: "gear")})
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
-                                Button(action: {showAddAppView = true}, label: {Image(systemName: "plus")})
+                                HStack {
+                                    VStack {
+                                        if isReloading {
+                                            ActivityIndicator(isAnimating: true)
+                                        }
+                                    }
+                                    Button(action: {showAddAppView = true}, label: {Image(systemName: "plus")})
+                                }
                             }
                         }
                         .navigationBarTitle("AltApps")
@@ -947,17 +948,47 @@ struct ContentView: View {
         .sheet(isPresented: $showUpdateView) {
             updateView()
         }
+        .sheet(isPresented: $showAddAppView) {
+            NavigationView {
+                VStack {
+                    Spacer()
+                    TextField("Enter direct download link", text: $addAppURL)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    Spacer()
+                    Button(action: {
+                        if addAppURL.contains(" ") {
+                            invalidURL = true
+                        } else {
+                            openURL(URL(string: "altstore://install?url=\(addAppURL)")!)
+                            showAddAppView = false
+                        }
+                    }, label: {
+                        Text("Install with AltStore")
+                            .customButtonSmall()
+                    })
+                        .alert("Invalid URL!", isPresented: $invalidURL) {
+                            Button("OK", role: .cancel) {
+                                invalidURL = false
+                            }
+                        }
+                }
+                .padding(.horizontal)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Done") {
+                            showAddAppView = false
+                        }
+                    }
+                }
+                .navigationBarTitle("Install other apps", displayMode: .inline)
+            }
+        }
         .accentColor(Color.mainColor)
-        .onAppear(perform: {isViewLoading = true; listLoadData(); AOTDloadData(); featuredJailbreakLoadData(); featuredTweakLoadData(); featuredOtherLoadData(); AltAppsUpdateLoadData(); if UserDefaults.standard.previousVersion != "v1.2.0-beta2" {UserDefaults.standard.previousVersion = "v1.2.0-beta2"; showUpdateView = true; UserDefaults.standard.showUpdate = true}})
+        .onAppear(perform: {isViewLoading = true; listLoadData(); AOTDloadData(); featuredJailbreakLoadData(); featuredTweakLoadData(); featuredOtherLoadData(); AltAppsUpdateLoadData(); if UserDefaults.standard.previousVersion != "v1.2.0-beta3" {UserDefaults.standard.previousVersion = "v1.2.0-beta3"; showUpdateView = true; UserDefaults.standard.showUpdate = true}})
     }
     func loadData() {
         print("Loading Data...")
         listLoadData()
-        AOTDloadData()
-        featuredJailbreakLoadData()
-        featuredTweakLoadData()
-        featuredOtherLoadData()
-        AltAppsUpdateLoadData()
     }
     func listLoadData() {
         guard let url = URL(string: "https://raw.githubusercontent.com/JiningLiu/AltApps/AltApps_Contents/contentList_1.2.0") else {
@@ -968,9 +999,10 @@ struct ContentView: View {
         URLSession.shared.dataTask(with: request) { data1, response1, error1 in
             if let data1 = data1 {
                 if let decodedResponse1 = try? JSONDecoder().decode(listResponse.self, from: data1) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.sync {
                         appResults = decodedResponse1.appResults
                     }
+                    AOTDloadData()
                     return
                 }
             }
@@ -986,9 +1018,10 @@ struct ContentView: View {
         URLSession.shared.dataTask(with: request2) { data3, response3, error3 in
             if let data3 = data3 {
                 if let decodedResponse3 = try? JSONDecoder().decode(appOfTheDayResponse.self, from: data3) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.sync {
                         aotdResult = decodedResponse3.aotdResult
                     }
+                    featuredJailbreakLoadData()
                     return
                 }
             }
@@ -1004,9 +1037,10 @@ struct ContentView: View {
         URLSession.shared.dataTask(with: request3) { data4, response4, error4 in
             if let data4 = data4 {
                 if let decodedResponse4 = try? JSONDecoder().decode(jailbreakResponse.self, from: data4) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.sync {
                         jailbreakResults = decodedResponse4.jailbreakResults
                     }
+                    featuredTweakLoadData()
                     return
                 }
             }
@@ -1022,9 +1056,10 @@ struct ContentView: View {
         URLSession.shared.dataTask(with: request4) { data5, response5, error5 in
             if let data5 = data5 {
                 if let decodedResponse5 = try? JSONDecoder().decode(tweakResponse.self, from: data5) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.sync {
                         tweakResults = decodedResponse5.tweakResults
                     }
+                    featuredOtherLoadData()
                     return
                 }
             }
@@ -1040,9 +1075,10 @@ struct ContentView: View {
         URLSession.shared.dataTask(with: request6) { data7, response7, error7 in
             if let data7 = data7 {
                 if let decodedResponse7 = try? JSONDecoder().decode(otherResponse.self, from: data7) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.sync {
                         otherResults = decodedResponse7.otherResults
                     }
+                    AltAppsUpdateLoadData()
                     return
                 }
             }
@@ -1058,9 +1094,10 @@ struct ContentView: View {
         URLSession.shared.dataTask(with: request1) { data2, response2, error2 in
             if let data2 = data2 {
                 if let decodedResponse2 = try? JSONDecoder().decode(AltAppsUpdateResponse.self, from: data2) {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.sync {
                         AltAppsRawResults = decodedResponse2.AltAppsRawResults
                     }
+                    isReloading = false
                     return
                 }
             }
