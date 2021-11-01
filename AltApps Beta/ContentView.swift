@@ -215,11 +215,18 @@ struct ContentView: View {
                                     Haptics.shared.play(.light)
                                     isReloading = true
                                     loadData()
+                                    if UserDefaults.standard.refreshImagesToggle {
+                                        if reloadImages == 0 {
+                                            reloadImages = 1
+                                        } else {
+                                            reloadImages = 0
+                                        }
+                                    }
                                     done()
                                 }) {
                                     ScrollView {
                                         ForEach(AltAppsRawResults, id: \.UpdateAppID) { item1 in
-                                            if item1.AltAppsVersion != "v1.2.0-beta2" {
+                                            if item1.AltAppsVersion != "v1.2.0-beta3" {
                                                 HStack {
                                                     Text("Update Available")
                                                         .font(.title)
@@ -783,7 +790,7 @@ struct ContentView: View {
                         VStack {
                             List {
                                 ForEach(AltAppsRawResults, id: \.UpdateAppID) { item1 in
-                                    if item1.AltAppsVersion != "v1.2.0-beta" {
+                                    if item1.AltAppsVersion != "v1.2.0-beta3" {
                                         Section("Update Available") {
                                             HStack {
                                                 Image("AltAppsIcon")

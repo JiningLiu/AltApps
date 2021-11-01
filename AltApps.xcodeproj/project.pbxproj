@@ -50,7 +50,6 @@
 		CC3831C426D87BDD00FDBF78 /* customButtonSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButtonSmall.swift; sourceTree = "<group>"; };
 		CC383D8626B1EFC400A9ED31 /* welcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcomeView.swift; sourceTree = "<group>"; };
 		CC3BED0826F7E7B500E96C3E /* updateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateView.swift; sourceTree = "<group>"; };
-		CC55B61A26D14B18002EF30E /* AltConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AltConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC6400D426C1DF14001AC9F6 /* AltApps-Beta-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AltApps-Beta-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CC86A19526BC2C650024D2E1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CC8E0EB826BA25E1004CEDC9 /* AltApps Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AltApps Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,13 +70,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CC55B61726D14B18002EF30E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CC8E0EB526BA25E1004CEDC9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,7 +125,6 @@
 			children = (
 				CCB912E626AE10F800625119 /* AltApps.app */,
 				CC8E0EB826BA25E1004CEDC9 /* AltApps Beta.app */,
-				CC55B61A26D14B18002EF30E /* AltConnect.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,23 +158,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CC55B61926D14B18002EF30E /* AltConnect (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CC55B62426D14B18002EF30E /* Build configuration list for PBXNativeTarget "AltConnect (macOS)" */;
-			buildPhases = (
-				CC55B61626D14B18002EF30E /* Sources */,
-				CC55B61726D14B18002EF30E /* Frameworks */,
-				CC55B61826D14B18002EF30E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "AltConnect (macOS)";
-			productName = "AltConnect (macOS)";
-			productReference = CC55B61A26D14B18002EF30E /* AltConnect.app */;
-			productType = "com.apple.product-type.application";
-		};
 		CC8E0EB726BA25E1004CEDC9 /* AltApps Beta */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC8E0EDD26BA25E3004CEDC9 /* Build configuration list for PBXNativeTarget "AltApps Beta" */;
@@ -230,9 +204,6 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
-					CC55B61926D14B18002EF30E = {
-						CreatedOnToolsVersion = 13.0;
-					};
 					CC8E0EB726BA25E1004CEDC9 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -258,19 +229,11 @@
 			targets = (
 				CCB912E526AE10F800625119 /* AltApps */,
 				CC8E0EB726BA25E1004CEDC9 /* AltApps Beta */,
-				CC55B61926D14B18002EF30E /* AltConnect (macOS) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CC55B61826D14B18002EF30E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CC8E0EB626BA25E1004CEDC9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,13 +255,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CC55B61626D14B18002EF30E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CC8E0EB426BA25E1004CEDC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,66 +290,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		CC55B62526D14B18002EF30E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 69AT4XUQ73;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltConnect";
-				PRODUCT_NAME = AltConnect;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		CC55B62626D14B18002EF30E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 69AT4XUQ73;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "jining-liu.AltConnect";
-				PRODUCT_NAME = AltConnect;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		CC8E0ED726BA25E3004CEDC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -631,15 +527,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CC55B62426D14B18002EF30E /* Build configuration list for PBXNativeTarget "AltConnect (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CC55B62526D14B18002EF30E /* Debug */,
-				CC55B62626D14B18002EF30E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		CC8E0EDD26BA25E3004CEDC9 /* Build configuration list for PBXNativeTarget "AltApps Beta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
