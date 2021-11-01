@@ -1,4 +1,4 @@
 {
   "devAppResults": [
-    {"devAppID": 1301007001, "devAppName":"Taptic", "devAppVersion":"v1.0.1", "devAppLink":"altstore://install?url=https://github.com/JiningLiu/AltApps-IPAs/releases/download/Taptic1.0.1/Taptic.ipa", "devAppImage":"https://i.ibb.co/gJggvLj/App-Icon.png", "devAppDetail":"Taptic is an app made by the AltApps devs! It's an app when everytime you tap the screen, your device will send a haptic feedback."}
+    {"devAppID": 1301007001, "devAppName":"Taptic", "devAppVersion":"v1.0.2", "devAppLink":"altstore://install?url=https://github.com/JiningLiu/AltApps-IPAs/releases/download/Taptic1.0.2/Taptic.ipa", "devAppImage":"https://i.ibb.co/gJggvLj/App-Icon.png", "devAppDetail":"Taptic is an app made by the AltApps devs! It's an app when everytime you tap the screen, your device will send a haptic feedback."}
 ]}
