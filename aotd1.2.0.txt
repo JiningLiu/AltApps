@@ -1,4 +1,4 @@
 {
   "aotdResult": [
-    {"AOTDid": 1301007001, "AOTDname":"Taptic", "AOTDinstall":"altstore://install?url=https://github.com/JiningLiu/AltApps-IPAs/releases/download/Taptic1.0.1/Taptic.ipa", "AOTDimage":"https://i.ibb.co/gJggvLj/App-Icon.png"}
+    {"AOTDid": 1301007001, "AOTDname":"unc0ver", "AOTDinstall":"https://unc0ver.dev/downloads/7.0.2/11c3f7b0eea806ba3cac975f74dcc2cc4e916bac/unc0ver_Release_7.0.2.ipa", "AOTDimage":"https://i.ibb.co/ysmmmPK/uncover-unc0ver-Icon-app-200px-1.png"}
 ]}
